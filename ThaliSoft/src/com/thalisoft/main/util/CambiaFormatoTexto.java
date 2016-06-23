@@ -25,7 +25,7 @@ public class CambiaFormatoTexto extends JRDefaultScriptlet {
         String respuesta="";
 
         for (NumberFormat nf : nfa) {
-            respuesta = (String)nf.format(Double.parseDouble(texto));
+            respuesta = nf.format(Double.parseDouble(texto));
         }
         return respuesta;
     }
@@ -36,7 +36,7 @@ public class CambiaFormatoTexto extends JRDefaultScriptlet {
         String respuesta="";
 
         for (NumberFormat nf : nfa) {
-            respuesta = (String)nf.format(numero);
+            respuesta = nf.format(numero);
         }
         return respuesta;
     }
@@ -47,7 +47,7 @@ public class CambiaFormatoTexto extends JRDefaultScriptlet {
         String respuesta="";
 
         for (NumberFormat nf : nfa) {
-            respuesta = (String)nf.format(numero);
+            respuesta = nf.format(numero);
         }
         
         
