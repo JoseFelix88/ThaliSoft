@@ -5,6 +5,8 @@
  */
 package com.thalisoft.main.util;
  
+import com.thalisoft.model.empleado.EmpleadoDao;
+
 
 /**
  *
@@ -13,6 +15,10 @@ package com.thalisoft.main.util;
 public class TestDao {
     
       public static void main(String args[]) {
+          
+          EmpleadoDao dao = new EmpleadoDao();
+          System.out.println("empleado: "+dao.CONSULTAR_EMPLEADO("1102819530").getCargo());
+          
           /*ProductoDAO dAO = new ProductoDAO();
           
           for (Object[] lotesalmacenado : dAO.lotesalmacenados("0004")) {

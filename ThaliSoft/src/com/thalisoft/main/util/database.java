@@ -167,7 +167,7 @@ public class database {
 
         //Se arma la consulta
         String q = " CALL  " + sp + " ( " + datavalores + " ) ";
-//        System.out.println(q);
+        System.out.println(q);
         //se ejecuta la consulta
 //        System.out.println(q);
         try {

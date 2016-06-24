@@ -10,7 +10,7 @@ public class Conexcion {
 
     public static Conexcion instancia;
     private Connection cnn;
-    private String bd = "db_bodega";
+    private String bd = "db_kokopelli";
     private String login = "root";
     private String password = "negro88";
     private String servidor = "localhost:3306";

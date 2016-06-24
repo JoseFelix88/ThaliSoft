@@ -1,14 +1,8 @@
 package com.thalisoft.main;
 
-import UpperEssential.UpperEssentialLookAndFeel;
 import com.thalisoft.controller.index.ControllerContenedor;
 import com.thalisoft.main.util.Edicion;
-import com.thalisoft.vista.index.Contenedor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *

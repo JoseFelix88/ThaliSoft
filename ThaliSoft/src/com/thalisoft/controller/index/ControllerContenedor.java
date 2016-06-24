@@ -1,6 +1,5 @@
 package com.thalisoft.controller.index;
 
-import UpperEssential.UpperEssentialLookAndFeel;
 import static com.thalisoft.main.util.Metodos.Obtener_Estado_Formulario;
 import com.thalisoft.main.util.Variables_Gloabales;
 import com.thalisoft.vista.empleado.FormEmpleado;
@@ -10,8 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.SwingWorker;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class ControllerContenedor extends SwingWorker<Object, Object> {
 
