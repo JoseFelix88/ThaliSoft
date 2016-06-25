@@ -53,6 +53,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setClosable(true);
@@ -109,7 +110,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/door.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/exit.png"))); // NOI18N
         jButton6.setToolTipText("Salir");
         jButton6.setBorder(null);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -164,8 +165,19 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/book.png"))); // NOI18N
-        jButton1.setToolTipText("Consultar Ficha");
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/book.png"))); // NOI18N
+        jButton7.setToolTipText("Consultar Ficha");
+        jButton7.setBorder(null);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/add-page.png"))); // NOI18N
+        jButton1.setToolTipText("Nueva Ficha");
         jButton1.setBorder(null);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -183,6 +195,8 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,14 +212,16 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -213,12 +229,11 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel3)
@@ -231,8 +246,8 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
                                 .addGap(18, 18, 18)
                                 .addComponent(JDateFechaingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -262,13 +277,20 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel5)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -303,7 +325,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel10)
                                 .addComponent(txtsalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,14 +336,8 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel12)
                                 .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel13))
-                            .addComponent(JDateFechaingreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6))
+                            .addComponent(JDateFechaingreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -346,17 +362,15 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        nuevo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (validarEmpleado() != false) {
             int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas registrar el empleado?");
             if (SI_NO == 0) {
-                Empleado empl = cargarEmpleado();
-                if (Edao.CONSULTAR_EMPLEADO(empl.getIdentificacion()) == null) {
-                    Object[] key = {0, empl.getIdentificacion(), empl.getApellidos().toUpperCase(), empl.getNombres().toUpperCase(),
-                        empl.getDireccion(), empl.getTelefono(), empl.getPassword(), empl.getCargo(), empl.getSalariobasico(), empl.getBonificacion()};
-                    if (Edao.CRUD_EMPLEADO(key) != false) {
+                if (Edao.CONSULTAR_EMPLEADO(cargarEmpleado().getIdentificacion()) == null) {
+                    if (Edao.CRUD_EMPLEADO(datosEmpleado(0)) != false) {
                         edicion.mensajes(2, "empleado registrado correctamente");
                     }
                 } else {
@@ -367,11 +381,33 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        if (validarEmpleado() != false) {
+            int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas registrar el empleado?");
+            if (SI_NO == 0) {
+                if (Edao.CONSULTAR_EMPLEADO(cargarEmpleado().getIdentificacion()) != null) {
+                    if (Edao.CRUD_EMPLEADO(datosEmpleado(1)) != false) {
+                        edicion.mensajes(2, "empleado actualizado correctamente");
+                    }
+                } else {
+                    edicion.mensajes(1, "el empleado no se  encuentra registrado.");
+                }
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        if (validarEmpleado() != false) {
+            int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas cancelar el contrato del empleado?");
+            if (SI_NO == 0) {
+                if (Edao.CONSULTAR_EMPLEADO(cargarEmpleado().getIdentificacion()) != null) {
+                    if (Edao.CRUD_EMPLEADO(datosEmpleado(2)) != false) {
+                        edicion.mensajes(2, "el contrado del empleado hasido cancelado");
+                    }
+                } else {
+                    edicion.mensajes(1, "el empleado no se  encuentra registrado.");
+                }
+            }
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -379,8 +415,13 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Object idempleado = edicion.msjQuest(2, "ingresa el numero de identificacion o de ficha del empleado.");
+        consulta_empleado(idempleado);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -391,6 +432,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -420,9 +462,10 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private Empleado cargarEmpleado() {
-        return empleado = new Empleado(0, txtidentificacion.getText(), "'" + txtapellidos.getText() + "'", "'" + txtnombres.getText() + "'",
+        return empleado = new Empleado(edicion.toNumeroEntero(txtidficha.getText()), txtidentificacion.getText(), txtapellidos.getText(), txtnombres.getText(),
                 "'" + txttelefono.getText() + "'", "'" + txtdireccion.getText().toUpperCase() + "'", "'" + txtpassword.getText() + "'",
-                "'" + txtcargo.getText().toUpperCase() + "'", edicion.toNumeroEntero(txtsalario.getText()), edicion.toNumeroEntero(txtbonificacion.getText()), 1, null);
+                "'" + txtcargo.getText().toUpperCase() + "'", edicion.toNumeroEntero(txtsalario.getText()),
+                edicion.toNumeroEntero(txtbonificacion.getText()), "1", null);
     }
 
     private boolean validarEmpleado() {
@@ -432,6 +475,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
             txtidentificacion.grabFocus();
             return false;
         }
+
         if (cargarEmpleado().getApellidos() == null | cargarEmpleado().getApellidos().isEmpty()) {
             edicion.mensajes(1, "por favor ingresa los apellidos del empleado.");
             txtapellidos.grabFocus();
@@ -444,6 +488,60 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         }
 
         return true;
+    }
+
+    private Object[] datosEmpleado(int opcion) {
+        Empleado empl = cargarEmpleado();
+        Object[] key = new Object[11];
+        if (opcion == 0) {
+            key[0] = 0;
+        }
+        if (opcion == 1) {
+            key[0] = 1;
+        }
+         if (opcion == 2) {
+            key[0] = 2;
+        }
+        key[1] = empl.getIdentificacion();
+        key[2] = "'" + empl.getApellidos().toUpperCase() + "'";
+        key[3] = "'" + empl.getNombres().toUpperCase() + "'";
+        key[4] = empl.getDireccion();
+        key[5] = empl.getTelefono();
+        key[6] = empl.getPassword();
+        key[7] = empl.getCargo();
+        key[8] = empl.getSalariobasico();
+        key[9] = empl.getBonificacion();
+        key[10] = empl.getIdusuario();
+        return key;
+    }
+
+    private void LOAD_EMPLOYED_IN_COMPONENT() {
+        txtidficha.setText(formatoTexto.numerico(empleado.getIdusuario()));
+        txtidentificacion.setText(empleado.getIdentificacion());
+        txtapellidos.setText(empleado.getApellidos());
+        txtnombres.setText(empleado.getNombres());
+        txtdireccion.setText(empleado.getDireccion());
+        txttelefono.setText(empleado.getTelefono());
+        txtpassword.setText(empleado.getPassword());
+        txtcargo.setText(empleado.getCargo());
+        txtsalario.setText("$ " + formatoTexto.numerico(empleado.getSalariobasico()));
+        txtbonificacion.setText("$ " + formatoTexto.numerico(empleado.getBonificacion()));
+        txtestado.setText(empleado.getEstado());
+        JDateFechaingreso.setDate(empleado.getFechahoraingreso());
+    }
+
+    private void nuevo() {
+        empleado = new Empleado();
+        LOAD_EMPLOYED_IN_COMPONENT();
+    }
+
+    private void consulta_empleado(Object key) {
+        empleado = Edao.CONSULTAR_EMPLEADO(key);
+        if (empleado != null) {
+            LOAD_EMPLOYED_IN_COMPONENT();
+        } else {
+            edicion.mensajes(1, "el empleado no se encuentra registrado.");
+        }
     }
 
 }

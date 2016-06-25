@@ -144,17 +144,13 @@ public class Edicion extends database {
             vtn = new JFrame();
             vtn.setVisible(true);
 
+        } else if (vtn.getState() == 1) {
+
+            vtn.setState(JFrame.NORMAL);
+
         } else {
 
-            if (vtn.getState() == 1) {
-
-                vtn.setState(JFrame.NORMAL);
-
-            } else {
-
-                vtn.setVisible(true);
-            }
-
+            vtn.setVisible(true);
         }
 
     }
@@ -185,14 +181,15 @@ public class Edicion extends database {
         return diferencia;
 
     }
-     public Date formatearFechaSQL(String fecha) {
+
+    public Date formatearFechaSQL(String fecha) {
 
         try {
 
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
             java.sql.Date fechaConFormato = (java.sql.Date) formato.parse(fecha);
-             
+
             return fechaConFormato;
 
         } catch (Exception er) {
@@ -284,7 +281,7 @@ public class Edicion extends database {
             return fechaConFormato;
 
         } catch (Exception er) {
-            System.out.println("error en conversion de fecha: "+er);
+            System.out.println("error en conversion de fecha: " + er);
         }
 
         return null;
@@ -955,7 +952,6 @@ public class Edicion extends database {
             } else if (opcion == 2) {
 
                 r = JOptionPane.showInputDialog(null, msj.toString().toUpperCase(), "Ingresar", JOptionPane.QUESTION_MESSAGE);
-                System.out.println("precione cancelar " + r);
                 if (r != null) {
                     int option = Integer.parseInt(r.toString());
                     if (option == JOptionPane.YES_NO_OPTION) {

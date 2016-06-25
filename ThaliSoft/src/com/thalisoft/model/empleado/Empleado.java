@@ -15,13 +15,13 @@ public class Empleado implements Serializable {
     private String cargo;
     private int salariobasico;
     private int bonificacion;
-    private int estado;
+    private String estado;
     private Date fechahoraingreso;
 
     public Empleado() {
     }
 
-    public Empleado(int idusuario, String identificacion, String apellidos, String nombres, String telefono, String direccion, String password, String cargo, int salariobasico, int bonificacion, int estado, Date fechahoraingreso) {
+    public Empleado(int idusuario, String identificacion, String apellidos, String nombres, String telefono, String direccion, String password, String cargo, int salariobasico, int bonificacion, String estado, Date fechahoraingreso) {
         this.idusuario = idusuario;
         this.identificacion = identificacion;
         this.apellidos = apellidos;
@@ -35,8 +35,6 @@ public class Empleado implements Serializable {
         this.estado = estado;
         this.fechahoraingreso = fechahoraingreso;
     }
-
-    
 
     public int getIdusuario() {
         return idusuario;
@@ -110,14 +108,6 @@ public class Empleado implements Serializable {
         this.bonificacion = bonificacion;
     }
 
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
     public Date getFechahoraingreso() {
         return fechahoraingreso;
     }
@@ -132,6 +122,14 @@ public class Empleado implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }
