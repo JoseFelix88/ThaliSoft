@@ -3,6 +3,7 @@ package com.thalisoft.controller.index;
 import static com.thalisoft.main.util.Metodos.Obtener_Estado_Formulario;
 import com.thalisoft.main.util.Variables_Gloabales;
 import com.thalisoft.vista.empleado.FormEmpleado;
+import com.thalisoft.vista.empleado.FormListarEmpleados;
 import com.thalisoft.vista.index.Contenedor;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
@@ -35,6 +36,7 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
      FormConsumoSaldoGeneral formConsumoSaldoGeneral;
      FormOrdenCompra formOrdenCompra;*/
     FormEmpleado formEmpleado;
+    FormListarEmpleados formListarEmpleados;
     private static JDesktopPane jDesktopPane1;
 
     public ControllerContenedor() {
@@ -92,18 +94,18 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
         switch (evt.getActionCommand()) {
 
             case "EMPLEADO":
-                if (Obtener_Estado_Formulario(this.formEmpleado, Contenedor.Panel_Contenedor)) {
+                if (Obtener_Estado_Formulario(this.formListarEmpleados, Contenedor.Panel_Contenedor)) {
                     
-                    formEmpleado = new FormEmpleado();
+                    formListarEmpleados = new FormListarEmpleados();
                     
-                    formEmpleado.show();
-                    Contenedor.Panel_Contenedor.add(formEmpleado);
+                    formListarEmpleados.show();
+                    Contenedor.Panel_Contenedor.add(formListarEmpleados);
                     java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
-                    java.awt.Dimension Tamaño_InternalFrame = formEmpleado.getSize();
-                    formEmpleado.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
+                    java.awt.Dimension Tamaño_InternalFrame = formListarEmpleados.getSize();
+                    formListarEmpleados.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
                             (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
                 } else {
-                    formEmpleado.setIcon(false);
+                    formListarEmpleados.setIcon(false);
                 }
 
                 break;

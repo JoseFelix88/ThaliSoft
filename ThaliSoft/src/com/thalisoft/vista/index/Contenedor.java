@@ -70,7 +70,7 @@ public class Contenedor extends javax.swing.JFrame {
 
                 if (e.getClickCount() == 2) {
                     setExtendedState(ICONIFIED);
-                    System.out.println("Double clicked on ");
+//                    System.out.println("Double clicked on ");
                 }
             }
         });
@@ -443,6 +443,7 @@ public class Contenedor extends javax.swing.JFrame {
         JM_Empleado.setBackground(new java.awt.Color(51, 51, 51));
         JM_Empleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JM_Empleado.setForeground(new java.awt.Color(255, 204, 0));
+        JM_Empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/employee.png"))); // NOI18N
         JM_Empleado.setText("EMPLEADO");
         JM_Empleado.setOpaque(true);
         jMenu3.add(JM_Empleado);

@@ -34,4 +34,16 @@ public class EmpleadoDao extends database {
         }
         return empleado;
     }
+
+    public Object[][] LISTADO_EMPLEADOS() {
+        Object parametros = 2 + "," + 0 + "";
+        Object[][] rs = SELECT_SP("SELECT_EMPLEADO", parametros);
+        return rs;
+    }
+
+    public String NUMERO_FICHA() {
+        Object parametros = 3 + "," + 0 + "";
+        Object[][] rs = SELECT_SP("SELECT_EMPLEADO", parametros);
+        return rs[0][0].toString();
+    }
 }
