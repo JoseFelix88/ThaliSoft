@@ -8,11 +8,12 @@ public class ProductoDao extends database {
 
     Edicion edicion = new Edicion();
     EmpleadoDao empleado;
-    public boolean EJECUTAR_CRUD(Object[]key){
+
+    public boolean EJECUTAR_CRUD(Object[] key) {
         return EJECUTAR_SP("CRUD_PRODUCTO", key);
     }
-    
-    public Producto READ_PRODUCTO(Object key){
+
+    public Producto READ_PRODUCTO(Object key) {
         Producto producto = null;
         Object[][] rs = SELECT_SP("SELECT_PRODUCTO", key);
         if (rs.length > 0) {
@@ -37,5 +38,12 @@ public class ProductoDao extends database {
         }
         return producto;
     }
-    
+
+    public Object[][] LISTADO_DE_PRODUCTOS(Object KEY) {
+        Object[][] rs = SELECT_SP("SELECT_PRODUCTO", KEY);
+        if (rs.length > 0) {
+            return rs;
+        }
+        return null;
+    }
 }
