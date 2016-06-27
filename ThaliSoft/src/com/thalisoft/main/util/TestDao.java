@@ -7,6 +7,9 @@ package com.thalisoft.main.util;
 
 import com.thalisoft.model.empleado.Empleado;
 import com.thalisoft.model.empleado.EmpleadoDao;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,21 +17,30 @@ import com.thalisoft.model.empleado.EmpleadoDao;
  */
 public class TestDao {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ParseException {
 
-        EmpleadoDao dao = new EmpleadoDao();
+           EmpleadoDao dao = new EmpleadoDao();
+        
+        
+        
+     
         System.out.println("ficha nueva: "+dao.NUMERO_FICHA());
         
         dao.LISTAR_EMPLEADO().stream().forEach((LISTADO_EMPLEADOS) -> {
-            System.out.println("ID. FICHA: "+LISTADO_EMPLEADOS.getIdusuario()+"\n"
-                    + ""+"idempleado: " + LISTADO_EMPLEADOS.getIdentificacion()+"\n"
-                    + "Apellidos y Nombres: "+LISTADO_EMPLEADOS.getApellidos()+"\n"
-                    + "Direccion: "+LISTADO_EMPLEADOS.getDireccion()+"\n"
-                    + "telefono: "+LISTADO_EMPLEADOS.getTelefono()+"\n"
-                    + "Cargo: "+LISTADO_EMPLEADOS.getCargo()+"\n"
-                    + "salario: "+LISTADO_EMPLEADOS.getSalariobasico()+"\n"
-                    + "bono: "+LISTADO_EMPLEADOS.getBonificacion()+"\n"
-                    + "estado: "+LISTADO_EMPLEADOS.getEstado());
+               try {
+                   System.out.println("ID. FICHA: "+LISTADO_EMPLEADOS.getIdusuario()+"\n"
+                           + ""+"idempleado: " + LISTADO_EMPLEADOS.getIdentificacion()+"\n"
+                           + "Apellidos y Nombres: "+LISTADO_EMPLEADOS.getApellidos()+"\n"
+                           + "Direccion: "+LISTADO_EMPLEADOS.getDireccion()+"\n"
+                           + "telefono: "+LISTADO_EMPLEADOS.getTelefono()+"\n"
+                           + "Cargo: "+LISTADO_EMPLEADOS.getCargo()+"\n"
+                           + "salario: "+LISTADO_EMPLEADOS.getSalariobasico()+"\n"
+                           + "bono: "+LISTADO_EMPLEADOS.getBonificacion()+"\n"
+                           + "estado: "+LISTADO_EMPLEADOS.getEstado()+"\n"
+                           + "fechahoraingreso: "+DateUtil.toTimestamp(LISTADO_EMPLEADOS.getFechahoraingreso()));
+               } catch (ParseException ex) {
+                   Logger.getLogger(TestDao.class.getName()).log(Level.SEVERE, null, ex);
+               }
         }); /*ProductoDAO dAO = new ProductoDAO();
         for (Object[] lotesalmacenado : dAO.lotesalmacenados("0004")) {
         System.out.println("producto: "+lotesalmacenado[3]);

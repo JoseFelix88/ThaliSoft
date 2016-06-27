@@ -8,26 +8,23 @@ public class Cliente implements Serializable {
 
     private int idcliente;
     private String identificacion;
-    private String apellidos;
-    private String nombres;
+    private String nombrecompleto;
     private String telefono;
     private String direccion;
     private Empleado empleado;
     private Date fechahoraingreso;
-    
-    public Cliente(int idcliente, String identificacion, String apellidos, String nombres, String telefono, String direccion, Empleado empleado, Date fechahoraingreso) {
+
+    public Cliente() {
+    }
+
+    public Cliente(int idcliente, String identificacion, String nombrecompleto, String telefono, String direccion, Empleado empleado, Date fechahoraingreso) {
         this.idcliente = idcliente;
         this.identificacion = identificacion;
-        this.apellidos = apellidos;
-        this.nombres = nombres;
+        this.nombrecompleto = nombrecompleto;
         this.telefono = telefono;
         this.direccion = direccion;
         this.empleado = empleado;
         this.fechahoraingreso = fechahoraingreso;
-    }
-
-
-    public Cliente() {
     }
 
     public int getIdcliente() {
@@ -46,20 +43,12 @@ public class Cliente implements Serializable {
         this.identificacion = identificacion;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getNombrecompleto() {
+        return nombrecompleto;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombrecompleto(String nombrecompleto) {
+        this.nombrecompleto = nombrecompleto;
     }
 
     public String getTelefono() {
@@ -93,5 +82,9 @@ public class Cliente implements Serializable {
     public void setFechahoraingreso(Date fechahoraingreso) {
         this.fechahoraingreso = fechahoraingreso;
     }
+    
 
-    }
+
+
+
+}

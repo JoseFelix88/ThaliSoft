@@ -24,7 +24,7 @@ public class ClienteDao extends database {
         if (rs.length > 0) {
             EmployedDAO = new EmpleadoDao();
             cliente = new Cliente(edicion.toNumeroEntero(rs[0][0].toString()), rs[0][1].toString(), 
-                    rs[0][2].toString(), rs[0][3].toString(), rs[0][4].toString(), rs[0][5].toString(), 
+                     rs[0][3].toString(), rs[0][4].toString(), rs[0][5].toString(), 
                     EmployedDAO.CONSULTAR_EMPLEADO(rs[0][6]), null);
         }
 

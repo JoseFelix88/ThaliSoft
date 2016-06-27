@@ -11,6 +11,8 @@ import java.io.*;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,29 +45,7 @@ public class Edicion extends database {
 
     public int v = 1;
 
-    public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String RUTA = "jdbc:mysql://localhost/Inventario";
-    public static final String USER = "root";
-    public static final String PASSWORD = "8810";
-    public static Connection Conec;
-
-    private void conexcion() {
-
-        try {
-
-            Class.forName(DRIVER);
-            Conec = DriverManager.getConnection(RUTA, USER, PASSWORD);
-
-            System.out.println("conexcion establecida");
-
-        } catch (Exception ex) {
-
-            JOptionPane.showMessageDialog(null, "ERROR: Servidor Fuera de Linea: \n" + ex);
-
-        }
-
-    }
-
+   
     public void llenartabla(JTable tabla, List<Object> list) {
         if (list != null) {
 
@@ -835,14 +815,14 @@ public class Edicion extends database {
         label.setIcon(iconoEscalado);
 
     }
+    
 
-    public boolean Insertar_Imagen(JFileChooserCus file, String sentenciaSQL) {
+    /*public boolean Insertar_Imagen(JFileChooserCus file, String sentenciaSQL) {
 
         boolean rpta = false;
 
         try {
-
-            conexcion();
+ 
 
             File fichero = file.GetFileSelected();
 
@@ -868,7 +848,7 @@ public class Edicion extends database {
 
         return rpta;
 
-    }
+    }*/
 
     // ***AUN SIN IMPLEMENTAR!***
     public static float Redondear_Sifras(int decimales_a_dejar, double Ynumero) {

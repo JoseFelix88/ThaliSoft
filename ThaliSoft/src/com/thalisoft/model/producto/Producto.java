@@ -2,6 +2,7 @@
 package com.thalisoft.model.producto;
 
 import com.thalisoft.model.empleado.Empleado;
+import java.util.Date;
 
  
 public class Producto {
@@ -20,12 +21,13 @@ public class Producto {
     private String edad;
     private String marca;
     private String diseño;
+    private Date fechahoraingreso;
     private Empleado empleado;
 
     public Producto() {
     }
 
-    public Producto(int id_producto, String id_referencia, String nom_descripcion, int strock, int costo_und, int precio_venta, int utilidad, String talla, String color, String materia, String sexo, String edad, String marca, String diseño, Empleado empleado) {
+    public Producto(int id_producto, String id_referencia, String nom_descripcion, int strock, int costo_und, int precio_venta, int utilidad, String talla, String color, String materia, String sexo, String edad, String marca, String diseño, Date fechahoraingreso, Empleado empleado) {
         this.id_producto = id_producto;
         this.id_referencia = id_referencia;
         this.nom_descripcion = nom_descripcion;
@@ -40,9 +42,11 @@ public class Producto {
         this.edad = edad;
         this.marca = marca;
         this.diseño = diseño;
+        this.fechahoraingreso = fechahoraingreso;
         this.empleado = empleado;
     }
 
+    
     public int getId_producto() {
         return id_producto;
     }
@@ -161,6 +165,14 @@ public class Producto {
 
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
+    }
+
+    public Date getFechahoraingreso() {
+        return fechahoraingreso;
+    }
+
+    public void setFechahoraingreso(Date fechahoraingreso) {
+        this.fechahoraingreso = fechahoraingreso;
     }
     
     
