@@ -1,39 +1,25 @@
-package com.thalisoft.vista.empleado;
+package com.thalisoft.vista.cliente;
 
+import com.thalisoft.vista.empleado.*;
 import com.thalisoft.controller.index.ControllerContenedor;
 import com.thalisoft.main.util.Edicion;
 import com.thalisoft.main.util.report.Manager_Report;
+import com.thalisoft.model.cliente.ClienteDao;
 import com.thalisoft.model.empleado.EmpleadoDao;
 import java.beans.PropertyVetoException;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
-import jdk.internal.org.xml.sax.InputSource;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
-public class FormListarEmpleados extends javax.swing.JInternalFrame {
+public class FormListarClientes extends javax.swing.JInternalFrame {
 
     Edicion edicion = new Edicion();
-    EmpleadoDao Edao;
+    ClienteDao Cdao;
+    ClienteDao clienteDao;
     Manager_Report report = new Manager_Report();
 
-    public FormListarEmpleados() {
-        Edao = new EmpleadoDao();
+    public FormListarClientes() {
+        Cdao = new ClienteDao();
         initComponents();
         llenar_listado();
     }
@@ -44,10 +30,9 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TB_LISTADO_EMPLEADO = new javax.swing.JTable();
+        TB_LISTADO_CLIENTES = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -62,37 +47,28 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
         });
         jPopupMenu1.add(jMenuItem1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/view-employed.png"))); // NOI18N
-        jMenuItem2.setText("VER FICHA");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(jMenuItem2);
-
         setIconifiable(true);
-        setTitle("Lista de Empleados");
+        setTitle("Lista de Clientes");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 204), 5, true), "EMPLEADOS REGISTRADOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 204), 5, true), "CLIENTES REGISTRADOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 14))); // NOI18N
 
-        TB_LISTADO_EMPLEADO.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        TB_LISTADO_EMPLEADO.setModel(new javax.swing.table.DefaultTableModel(
+        TB_LISTADO_CLIENTES.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        TB_LISTADO_CLIENTES.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "No. Ficha", "Identificacion", "Apellidos y Nombres", "Direccion", "Telefonos", "Cargo", "Salario", "Bonificacion", "CONTRATO"
+                "No. Ficha", "Identificacion", "Apellidos y Nombres", "Direccion", "Telefonos", "Registrado Por", "Fecha de Registro"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -103,20 +79,20 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        TB_LISTADO_EMPLEADO.setComponentPopupMenu(jPopupMenu1);
-        TB_LISTADO_EMPLEADO.setRowHeight(22);
-        TB_LISTADO_EMPLEADO.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(TB_LISTADO_EMPLEADO);
-        if (TB_LISTADO_EMPLEADO.getColumnModel().getColumnCount() > 0) {
-            TB_LISTADO_EMPLEADO.getColumnModel().getColumn(0).setMaxWidth(75);
-            TB_LISTADO_EMPLEADO.getColumnModel().getColumn(2).setMinWidth(150);
-            TB_LISTADO_EMPLEADO.getColumnModel().getColumn(3).setMinWidth(200);
+        TB_LISTADO_CLIENTES.setComponentPopupMenu(jPopupMenu1);
+        TB_LISTADO_CLIENTES.setRowHeight(22);
+        TB_LISTADO_CLIENTES.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(TB_LISTADO_CLIENTES);
+        if (TB_LISTADO_CLIENTES.getColumnModel().getColumnCount() > 0) {
+            TB_LISTADO_CLIENTES.getColumnModel().getColumn(0).setMaxWidth(75);
+            TB_LISTADO_CLIENTES.getColumnModel().getColumn(2).setMinWidth(150);
+            TB_LISTADO_CLIENTES.getColumnModel().getColumn(3).setMinWidth(200);
         }
 
         jToolBar1.setRollover(true);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/add-employed.png"))); // NOI18N
-        jButton1.setToolTipText("Añadir Empleado");
+        jButton1.setToolTipText("Añadir Cliente");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -158,10 +134,10 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 941, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 941, Short.MAX_VALUE))
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -200,7 +176,7 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
         JInternalFrame ji = validador.getJInternalFrame(FormEmpleado.class.getName());
 
         if (ji == null || ji.isClosed()) {
-            ji = new FormEmpleado(this);
+            ji = new FormCliente(this);
             ControllerContenedor.getjDesktopPane1().add(ji, 0);
             validador.addJIframe(FormEmpleado.class.getName(), ji);
             ji.setVisible(true);
@@ -215,10 +191,10 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FormEmpleado fe = new FormEmpleado(this);
+        FormCliente fe = new FormCliente(this);
         JInternalFrame ji = validador.getJInternalFrame(FormEmpleado.class.getName());
         if (ji == null || ji.isClosed()) {
-            fe.consulta_empleado(TB_LISTADO_EMPLEADO.getValueAt(TB_LISTADO_EMPLEADO.getSelectedRow(), 0));
+            fe.consulta_cliente(TB_LISTADO_CLIENTES.getValueAt(TB_LISTADO_CLIENTES.getSelectedRow(), 0));
             ji = fe;
             ControllerContenedor.getjDesktopPane1().add(ji, 0);
             validador.addJIframe(FormEmpleado.class.getName(), ji);
@@ -237,18 +213,13 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
         report.ListadoDeEmpleados();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        report.FichaDeEmpleado(TB_LISTADO_EMPLEADO.getValueAt(TB_LISTADO_EMPLEADO.getSelectedRow(), 0));
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TB_LISTADO_EMPLEADO;
+    private javax.swing.JTable TB_LISTADO_CLIENTES;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -256,7 +227,7 @@ public class FormListarEmpleados extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void llenar_listado() {
-        edicion.llenarTabla(TB_LISTADO_EMPLEADO, Edao.LISTADO_EMPLEADOS());
+        edicion.llenarTabla(TB_LISTADO_CLIENTES, Cdao.LISTADO_CLIENTES());
     }
 }
 

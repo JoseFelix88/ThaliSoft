@@ -2,6 +2,8 @@ package com.thalisoft.controller.index;
 
 import static com.thalisoft.main.util.Metodos.Obtener_Estado_Formulario;
 import com.thalisoft.main.util.Variables_Gloabales;
+import com.thalisoft.vista.cliente.FormCliente;
+import com.thalisoft.vista.cliente.FormListarClientes;
 import com.thalisoft.vista.empleado.FormEmpleado;
 import com.thalisoft.vista.empleado.FormListarEmpleados;
 import com.thalisoft.vista.index.Contenedor;
@@ -35,8 +37,12 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
      FormPedidoPuntoEntrega formPedidoPuntoEntrega;
      FormConsumoSaldoGeneral formConsumoSaldoGeneral;
      FormOrdenCompra formOrdenCompra;*/
+
     FormEmpleado formEmpleado;
     FormListarEmpleados formListarEmpleados;
+    FormCliente formCliente;
+    FormListarClientes formListarClientes;
+
     private static JDesktopPane jDesktopPane1;
 
     public ControllerContenedor() {
@@ -69,7 +75,9 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
             Obtener_Eventos_De_SubMenu(contenedor.JM_ConsumoSaldoGeneral);
             Obtener_Eventos_De_SubMenu(contenedor.JM_OrdenCompra);
             Obtener_Eventos_De_SubMenu(contenedor.JM_Empleado);
-            contenedor.JM_Profile.setText(Variables_Gloabales.EMPLEADO.getNombres());
+            Obtener_Eventos_De_SubMenu(contenedor.JM_Clientes);
+            contenedor.JM_Profile.setText(Variables_Gloabales.EMPLEADO.getNombres()+" "
+                    + ""+Variables_Gloabales.EMPLEADO.getApellidos());
         } else {
             contenedor.setVisible(true);
         }
@@ -95,9 +103,8 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
 
             case "EMPLEADO":
                 if (Obtener_Estado_Formulario(this.formListarEmpleados, Contenedor.Panel_Contenedor)) {
-                    
+
                     formListarEmpleados = new FormListarEmpleados();
-                    
                     formListarEmpleados.show();
                     Contenedor.Panel_Contenedor.add(formListarEmpleados);
                     java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
@@ -109,26 +116,24 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
                 }
 
                 break;
-            /* case "Gestionar Producto":
-             if (Obtener_Estado_Formulario(this.formProducto, Contenedor.Panel_Contenedor)) {
+                
+            case "CLIENTES":
+                if (Obtener_Estado_Formulario(this.formListarClientes, Contenedor.Panel_Contenedor)) {
 
-             formProducto = new FormProducto();
-             formAsignarCUM = new FormAsignarCUM();
-             formListarPlu = new FormListarPlu();
+                    formListarClientes = new FormListarClientes();
 
-             new ControllerProductoAux(formProducto, formAsignarCUM, formListarPlu).GO();
-             formProducto.show();
-             Contenedor.Panel_Contenedor.add(formProducto);
-             java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
-             java.awt.Dimension Tamaño_InternalFrame = formProducto.getSize();
-             formProducto.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
-             (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
-             } else {
-             formProducto.setIcon(false);
-             }
-             break;
+                    formListarClientes.show();
+                    Contenedor.Panel_Contenedor.add(formListarClientes);
+                    java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
+                    java.awt.Dimension Tamaño_InternalFrame = formListarClientes.getSize();
+                    formListarClientes.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
+                            (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
+                } else {
+                    formListarClientes.setIcon(false);
+                }
+                break;
 
-             case "Compra":
+            /*  case "Compra":
 
              if (Obtener_Estado_Formulario(this.formFacturaCompra, Contenedor.Panel_Contenedor)) {
              formFacturaCompra = new FormFacturaCompra();
@@ -330,7 +335,6 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
              }
 
              break;*/
-
             case "Salir":
                 System.exit(0);
         }

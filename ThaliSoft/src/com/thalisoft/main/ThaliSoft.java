@@ -2,6 +2,7 @@ package com.thalisoft.main;
 
 import com.thalisoft.controller.index.ControllerContenedor;
 import com.thalisoft.main.util.Edicion;
+import com.thalisoft.vista.index.FormAcceso;
 import javax.swing.SwingUtilities;
 
 /**
@@ -19,7 +20,8 @@ public class ThaliSoft {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new Edicion().cambiar_skin(2);
-                new ControllerContenedor().execute();
+//                new ControllerContenedor().execute();
+                new FormAcceso().setVisible(true);
             }
         });
     }

@@ -1,24 +1,33 @@
-package com.thalisoft.vista.empleado;
+package com.thalisoft.vista.cliente;
 
+import com.thalisoft.vista.cliente.*;
 import com.thalisoft.main.util.CambiaFormatoTexto;
 import com.thalisoft.main.util.Edicion;
+import com.thalisoft.main.util.Variables_Gloabales;
 import com.thalisoft.main.util.report.Manager_Report;
-import com.thalisoft.model.empleado.Empleado;
+import com.thalisoft.model.cliente.Cliente;
+import com.thalisoft.model.cliente.ClienteDao;
 import com.thalisoft.model.empleado.EmpleadoDao;
 
-public class FormEmpleado extends javax.swing.JInternalFrame {
+public class FormCliente extends javax.swing.JInternalFrame {
 
-    Empleado empleado = null;
-    EmpleadoDao Edao;
+    Cliente cliente;
+    ClienteDao Cdao;
     Edicion edicion = new Edicion();
     CambiaFormatoTexto formatoTexto = new CambiaFormatoTexto();
-    FormListarEmpleados formListarEmpleados;
+    FormListarClientes formListarClientes;
 
-    FormEmpleado(FormListarEmpleados aThis) {
-        Edao = new EmpleadoDao();
-        formListarEmpleados = aThis;
+    public FormCliente() {
+        Cdao = new ClienteDao();
         initComponents();
-        txtidficha.setText(Edao.NUMERO_FICHA());
+        txtidficha.setText(Cdao.NUMERO_FICHA());
+    }
+
+    FormCliente(FormListarClientes aThis) {
+        Cdao = new ClienteDao();
+        formListarClientes = aThis;
+        initComponents();
+        txtidficha.setText(Cdao.NUMERO_FICHA());
     }
 
     @SuppressWarnings("unchecked")
@@ -38,23 +47,9 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         txtdireccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txttelefono = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtcargo = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtsalario = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtbonificacion = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        txtestado = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        JDateFechaingreso = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -64,8 +59,8 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Empleado");
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 255), 4, true), "FICHA DE EMPLEADO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 18))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 4, true), "FICHA DE CLIENTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 18))); // NOI18N
 
         jLabel2.setText("ID. FICHA");
 
@@ -83,36 +78,9 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         jLabel7.setText("TELEFONO");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/id-card.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/id-card-bb.png"))); // NOI18N
 
-        jLabel8.setText("CLAVE DE ACCESO");
-
-        jLabel9.setText("CARGO");
-
-        jLabel10.setText("SALARIO BASICO");
-
-        txtsalario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtsalario.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txtsalario.setText("$ 0");
-
-        jLabel11.setText("BONIFICACIÓN");
-
-        txtbonificacion.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtbonificacion.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txtbonificacion.setText("$ 0");
-
-        jLabel12.setText("ESTADO ACTUAL");
-
-        txtestado.setEnabled(false);
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel13.setText("FECHA DE REGISTRO EN SISTEMA");
-
-        JDateFechaingreso.setDateFormatString("dd MMM yyyy hh:mm:ss");
-        JDateFechaingreso.setEnabled(false);
-        JDateFechaingreso.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/exit.png"))); // NOI18N
         jButton6.setToolTipText("Salir");
@@ -122,28 +90,6 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/cancel.png"))); // NOI18N
-        jButton4.setToolTipText("Cancelar");
-        jButton4.setBorder(null);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/printer.png"))); // NOI18N
-        jButton5.setToolTipText("Imprimir Ficha");
-        jButton5.setBorder(null);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
             }
         });
 
@@ -204,11 +150,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -219,8 +161,6 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
@@ -242,34 +182,10 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(JDateFechaingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtpassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txttelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel9))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtsalario, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                                        .addComponent(jLabel11)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtcargo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtbonificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtidficha, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtidentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -282,7 +198,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
+                        .addGap(179, 179, 179)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
@@ -291,9 +207,7 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -318,27 +232,8 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9)
-                                .addComponent(txtcargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel10)
-                                .addComponent(txtsalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtbonificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel12)
-                                .addComponent(txtestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13))
-                            .addComponent(JDateFechaingreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -369,15 +264,15 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (validarEmpleado() != false) {
-            int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas registrar el empleado?");
+            int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas registrar el cliente?");
             if (SI_NO == 0) {
-                if (Edao.CONSULTAR_EMPLEADO(cargarEmpleado().getIdentificacion()) == null) {
-                    if (Edao.CRUD_EMPLEADO(datosEmpleado(0)) != false) {
-                        formListarEmpleados.llenar_listado();
-                        edicion.mensajes(2, "empleado registrado correctamente");
+                if (Cdao.CONSULTAR_CLIENTE(cargarCliente().getIdentificacion()) == null) {
+                    if (Cdao.CRUD_CLIENTE(datosCliente(0)) != false) {
+                        formListarClientes.llenar_listado();
+                        edicion.mensajes(2, "Cliente registrado correctamente");
                     }
                 } else {
-                    edicion.mensajes(1, "el empleado se encuentra registrado.");
+                    edicion.mensajes(1, "el cliente se encuentra registrado.");
                 }
             }
         }
@@ -385,111 +280,77 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (validarEmpleado() != false) {
-            int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas registrar el empleado?");
+            int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas registrar el cliente?");
             if (SI_NO == 0) {
-                if (Edao.CONSULTAR_EMPLEADO(cargarEmpleado().getIdentificacion()) != null) {
-                    if (Edao.CRUD_EMPLEADO(datosEmpleado(1)) != false) {
-                        formListarEmpleados.llenar_listado();
-                        edicion.mensajes(2, "empleado actualizado correctamente");
+                if (Cdao.CONSULTAR_CLIENTE(cargarCliente().getIdcliente()) != null) {
+                    if (Cdao.CRUD_CLIENTE(datosCliente(1)) != false) {
+                        formListarClientes.llenar_listado();
+                        edicion.mensajes(2, "cliente actualizado correctamente");
 
                     }
                 } else {
-                    edicion.mensajes(1, "el empleado no se  encuentra registrado.");
+                    edicion.mensajes(1, "el cliente no se  encuentra registrado.");
                 }
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (validarEmpleado() != false) {
-            int SI_NO = (int) edicion.msjQuest(1, "estas seguro que deseas cancelar el contrato del empleado?");
-            if (SI_NO == 0) {
-                if (Edao.CONSULTAR_EMPLEADO(cargarEmpleado().getIdentificacion()) != null) {
-                    if (Edao.CRUD_EMPLEADO(datosEmpleado(2)) != false) {
-                        formListarEmpleados.llenar_listado();
-                        edicion.mensajes(2, "el contrado del empleado hasido cancelado");
-                    }
-                } else {
-                    edicion.mensajes(1, "el empleado no se  encuentra registrado.");
-                }
-            }
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Manager_Report report = new Manager_Report();
-        report.FichaDeEmpleado(txtidficha.getText());
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Object idempleado = edicion.msjQuest(2, "ingresa el numero de identificacion o de ficha del empleado.");
-        consulta_empleado(idempleado);
+        Object idcliente = edicion.msjQuest(2, "ingresa el numero de identificacion o de ficha del cliente.");
+        consulta_cliente(idcliente);
     }//GEN-LAST:event_jButton7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser JDateFechaingreso;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtapellidos;
-    private javax.swing.JTextField txtbonificacion;
-    private javax.swing.JTextField txtcargo;
     private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtestado;
     private javax.swing.JTextField txtidentificacion;
     private javax.swing.JTextField txtidficha;
     private javax.swing.JTextField txtnombres;
-    private javax.swing.JPasswordField txtpassword;
-    private javax.swing.JTextField txtsalario;
     private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
+EmpleadoDao edao;
 
-    private Empleado cargarEmpleado() {
-        return empleado = new Empleado(edicion.toNumeroEntero(txtidficha.getText()), txtidentificacion.getText(), txtapellidos.getText(), txtnombres.getText(),
-                "'" + txttelefono.getText() + "'", "'" + txtdireccion.getText().toUpperCase() + "'", "'" + txtpassword.getText() + "'",
-                "'" + txtcargo.getText().toUpperCase() + "'", edicion.toNumeroEntero(txtsalario.getText()),
-                edicion.toNumeroEntero(txtbonificacion.getText()), "1", null);
+    private Cliente cargarCliente() {
+        edao = new EmpleadoDao();
+        return cliente = new Cliente(edicion.toNumeroEntero(txtidficha.getText()), txtidentificacion.getText(), txtapellidos.getText(), txtnombres.getText(),
+                "'" + txttelefono.getText() + "'", "'" + txtdireccion.getText().toUpperCase() + "'",
+                edao.CONSULTAR_EMPLEADO(Variables_Gloabales.EMPLEADO.getIdentificacion()), null);
     }
 
     private boolean validarEmpleado() {
-
-        if (cargarEmpleado().getIdentificacion() == null | cargarEmpleado().getIdentificacion().isEmpty()) {
-            edicion.mensajes(1, "por favor ingresa el numero de identidad del empleado.");
+        cliente = cargarCliente();
+        if (cliente.getIdentificacion() == null | cliente.getIdentificacion().isEmpty()) {
+            edicion.mensajes(1, "por favor ingresa el numero de identidad del cliente.");
             txtidentificacion.grabFocus();
             return false;
         }
 
-        if (cargarEmpleado().getApellidos() == null | cargarEmpleado().getApellidos().isEmpty()) {
-            edicion.mensajes(1, "por favor ingresa los apellidos del empleado.");
+        if (cliente.getApellidos() == null | cliente.getApellidos().isEmpty()) {
+            edicion.mensajes(1, "por favor ingresa los apellidos del cliente.");
             txtapellidos.grabFocus();
             return false;
         }
-        if (cargarEmpleado().getNombres() == null | cargarEmpleado().getNombres().isEmpty()) {
-            edicion.mensajes(1, "por favor ingresa los nombres del empleado.");
+        if (cliente.getNombres() == null | cliente.getNombres().isEmpty()) {
+            edicion.mensajes(1, "por favor ingresa los nombres del cliente.");
             txtnombres.grabFocus();
             return false;
         }
@@ -497,9 +358,9 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         return true;
     }
 
-    private Object[] datosEmpleado(int opcion) {
-        Empleado empl = cargarEmpleado();
-        Object[] key = new Object[11];
+    private Object[] datosCliente(int opcion) {
+        cliente = cargarCliente();
+        Object[] key = new Object[8];
         if (opcion == 0) {
             key[0] = 0;
         }
@@ -509,46 +370,39 @@ public class FormEmpleado extends javax.swing.JInternalFrame {
         if (opcion == 2) {
             key[0] = 2;
         }
-        key[1] = empl.getIdentificacion();
-        key[2] = "'" + empl.getApellidos().toUpperCase() + "'";
-        key[3] = "'" + empl.getNombres().toUpperCase() + "'";
-        key[4] = empl.getDireccion();
-        key[5] = empl.getTelefono();
-        key[6] = empl.getPassword();
-        key[7] = empl.getCargo();
-        key[8] = empl.getSalariobasico();
-        key[9] = empl.getBonificacion();
-        key[10] = empl.getIdusuario();
+        key[1] = cliente.getIdcliente();
+        key[2] = "'" + cliente.getApellidos().toUpperCase() + "'";
+        key[3] = "'" + cliente.getNombres().toUpperCase() + "'";
+        key[4] = cliente.getTelefono();
+        key[5] = cliente.getDireccion();
+        key[6] = cliente.getEmpleado().getIdentificacion();
+        key[7] = "'"+cliente.getIdentificacion()+"'";
+        
         return key;
     }
 
     private void LOAD_EMPLOYED_IN_COMPONENT() {
-        txtidficha.setText(formatoTexto.numerico(empleado.getIdusuario()));
-        txtidentificacion.setText(empleado.getIdentificacion());
-        txtapellidos.setText(empleado.getApellidos());
-        txtnombres.setText(empleado.getNombres());
-        txtdireccion.setText(empleado.getDireccion());
-        txttelefono.setText(empleado.getTelefono());
-        txtpassword.setText(empleado.getPassword());
-        txtcargo.setText(empleado.getCargo());
-        txtsalario.setText("$ " + formatoTexto.numerico(empleado.getSalariobasico()));
-        txtbonificacion.setText("$ " + formatoTexto.numerico(empleado.getBonificacion()));
-        txtestado.setText(empleado.getEstado());
-        JDateFechaingreso.setDate(empleado.getFechahoraingreso());
+        txtidficha.setText(formatoTexto.numerico(cliente.getIdcliente()));
+        txtidentificacion.setText(cliente.getIdentificacion());
+        txtapellidos.setText(cliente.getApellidos());
+        txtnombres.setText(cliente.getNombres());
+        txtdireccion.setText(cliente.getDireccion());
+        txttelefono.setText(cliente.getTelefono());
+        
     }
 
     private void nuevo() {
-        empleado = new Empleado();
+        cliente = new Cliente();
         LOAD_EMPLOYED_IN_COMPONENT();
-        txtidficha.setText(Edao.NUMERO_FICHA());
+        txtidficha.setText(Cdao.NUMERO_FICHA());
     }
 
-    public void consulta_empleado(Object key) {
-        empleado = Edao.CONSULTAR_EMPLEADO(key);
-        if (empleado != null) {
+    public void consulta_cliente(Object key) {
+        cliente = Cdao.CONSULTAR_CLIENTE(key);
+        if (cliente != null) {
             LOAD_EMPLOYED_IN_COMPONENT();
         } else {
-            edicion.mensajes(1, "el empleado no se encuentra registrado.");
+            edicion.mensajes(1, "el cliente no se encuentra registrado.");
         }
     }
 

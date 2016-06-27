@@ -155,6 +155,7 @@ public class Contenedor extends javax.swing.JFrame {
         JM_pedidoPunto = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         JM_Empleado = new javax.swing.JMenuItem();
+        JM_Clientes = new javax.swing.JMenuItem();
         JM_Profile = new javax.swing.JMenu();
         R_Salir = new javax.swing.JMenuItem();
 
@@ -182,7 +183,6 @@ public class Contenedor extends javax.swing.JFrame {
         R_Salida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         R_Salida.setForeground(new java.awt.Color(255, 204, 0));
         R_Salida.setText("Generar Salida");
-        R_Salida.setOpaque(true);
         jMenu2.add(R_Salida);
 
         JM_despachoproducto.setBackground(new java.awt.Color(51, 51, 51));
@@ -190,7 +190,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_despachoproducto.setForeground(new java.awt.Color(255, 204, 0));
         JM_despachoproducto.setText("Despachos de Producto");
         JM_despachoproducto.setActionCommand("Despachosproducto");
-        JM_despachoproducto.setOpaque(true);
         jMenu2.add(JM_despachoproducto);
 
         Contenedor_Menu_General.add(jMenu2);
@@ -210,7 +209,6 @@ public class Contenedor extends javax.swing.JFrame {
         R_compra.setForeground(new java.awt.Color(255, 204, 0));
         R_compra.setText("Factura de Compra");
         R_compra.setActionCommand("Compra");
-        R_compra.setOpaque(true);
         Menu_Empleado.add(R_compra);
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
@@ -222,14 +220,12 @@ public class Contenedor extends javax.swing.JFrame {
         JM_CompraProducto.setForeground(new java.awt.Color(255, 204, 0));
         JM_CompraProducto.setText("Compra de Productos");
         JM_CompraProducto.setActionCommand("CompraProductos");
-        JM_CompraProducto.setOpaque(true);
         Menu_Empleado.add(JM_CompraProducto);
 
         JM_OrdenCompra.setBackground(new java.awt.Color(51, 51, 51));
         JM_OrdenCompra.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JM_OrdenCompra.setForeground(new java.awt.Color(255, 204, 51));
         JM_OrdenCompra.setText("Orden de Compra");
-        JM_OrdenCompra.setOpaque(true);
         Menu_Empleado.add(JM_OrdenCompra);
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
@@ -249,14 +245,12 @@ public class Contenedor extends javax.swing.JFrame {
         R_Producto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         R_Producto.setForeground(new java.awt.Color(255, 204, 0));
         R_Producto.setText("Gestionar Producto");
-        R_Producto.setOpaque(true);
         jMenu4.add(R_Producto);
 
         JM_Lotes.setBackground(new java.awt.Color(51, 51, 51));
         JM_Lotes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JM_Lotes.setForeground(new java.awt.Color(255, 204, 0));
         JM_Lotes.setText("Lotes Almacenados");
-        JM_Lotes.setOpaque(true);
         jMenu4.add(JM_Lotes);
 
         JM_DevolucionPunto.setBackground(new java.awt.Color(51, 51, 51));
@@ -264,7 +258,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_DevolucionPunto.setForeground(new java.awt.Color(255, 204, 0));
         JM_DevolucionPunto.setText("Devolucion Punto de Entrega");
         JM_DevolucionPunto.setActionCommand("devolucionpunto");
-        JM_DevolucionPunto.setOpaque(true);
         jMenu4.add(JM_DevolucionPunto);
 
         JM_Ubicarproducto.setBackground(new java.awt.Color(51, 51, 51));
@@ -272,7 +265,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_Ubicarproducto.setForeground(new java.awt.Color(255, 204, 0));
         JM_Ubicarproducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/bulbgrey-codigo-pin-de-ubicacion-icono-3949-32.png"))); // NOI18N
         JM_Ubicarproducto.setText("Ubicacion de Producto");
-        JM_Ubicarproducto.setOpaque(true);
         jMenu4.add(JM_Ubicarproducto);
 
         Contenedor_Menu_General.add(jMenu4);
@@ -290,7 +282,6 @@ public class Contenedor extends javax.swing.JFrame {
         JMReporte.setForeground(new java.awt.Color(255, 153, 0));
         JMReporte.setText("Reporte de Entrada & Salidas");
         JMReporte.setActionCommand("Reporte");
-        JMReporte.setOpaque(true);
         JMReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMReporteActionPerformed(evt);
@@ -307,7 +298,6 @@ public class Contenedor extends javax.swing.JFrame {
         JMReporteInvFisico.setForeground(new java.awt.Color(255, 153, 0));
         JMReporteInvFisico.setText("Planilla para Inventario Fisico");
         JMReporteInvFisico.setActionCommand("invFisico");
-        JMReporteInvFisico.setOpaque(true);
         JMReporteInvFisico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMReporteInvFisicoActionPerformed(evt);
@@ -320,7 +310,6 @@ public class Contenedor extends javax.swing.JFrame {
         JMReporteInOut.setForeground(new java.awt.Color(255, 153, 0));
         JMReporteInOut.setText("Entradas/Salidas - Diarias, Semanales");
         JMReporteInOut.setActionCommand("ReporteInOut");
-        JMReporteInOut.setOpaque(true);
         JMReporteInOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMReporteInOutActionPerformed(evt);
@@ -343,7 +332,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_conteofisico.setForeground(new java.awt.Color(255, 153, 0));
         JM_conteofisico.setText("Tomar Conteo Fisico");
         JM_conteofisico.setActionCommand("Formconteofisico");
-        JM_conteofisico.setOpaque(true);
         JM_conteofisico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JM_conteofisicoActionPerformed(evt);
@@ -355,7 +343,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_SalidaAutorizada.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JM_SalidaAutorizada.setForeground(new java.awt.Color(255, 153, 0));
         JM_SalidaAutorizada.setText("Salida Autorizada");
-        JM_SalidaAutorizada.setOpaque(true);
         JM_SalidaAutorizada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JM_SalidaAutorizadaActionPerformed(evt);
@@ -368,7 +355,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_inventariobodega.setForeground(new java.awt.Color(255, 153, 0));
         JM_inventariobodega.setText("Inventario Bodega");
         JM_inventariobodega.setActionCommand("Forminventariobodega");
-        JM_inventariobodega.setOpaque(true);
         JM_inventariobodega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JM_inventariobodegaActionPerformed(evt);
@@ -381,7 +367,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_ConsumoSaldoGeneral.setForeground(new java.awt.Color(255, 153, 0));
         JM_ConsumoSaldoGeneral.setText("Consumos y Saldos Generales");
         JM_ConsumoSaldoGeneral.setActionCommand("formconsumosaldogeneral");
-        JM_ConsumoSaldoGeneral.setOpaque(true);
         JM_ConsumoSaldoGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JM_ConsumoSaldoGeneralActionPerformed(evt);
@@ -398,7 +383,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_inventariopunto.setForeground(new java.awt.Color(255, 153, 0));
         JM_inventariopunto.setText("Inventario Punto de Entrega");
         JM_inventariopunto.setActionCommand("forminventariopunto");
-        JM_inventariopunto.setOpaque(true);
         JM_inventariopunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JM_inventariopuntoActionPerformed(evt);
@@ -411,7 +395,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_consumosaldopunto.setForeground(new java.awt.Color(255, 153, 0));
         JM_consumosaldopunto.setText("Consumos y Saldos Finales Punto de Entrega");
         JM_consumosaldopunto.setActionCommand("formconsumosaldo");
-        JM_consumosaldopunto.setOpaque(true);
         JM_consumosaldopunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JM_consumosaldopuntoActionPerformed(evt);
@@ -424,7 +407,6 @@ public class Contenedor extends javax.swing.JFrame {
         JM_pedidoPunto.setForeground(new java.awt.Color(255, 153, 0));
         JM_pedidoPunto.setText("Pedido Punto de Entrega");
         JM_pedidoPunto.setActionCommand("formpedidopunto");
-        JM_pedidoPunto.setOpaque(true);
         JM_pedidoPunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JM_pedidoPuntoActionPerformed(evt);
@@ -444,9 +426,16 @@ public class Contenedor extends javax.swing.JFrame {
         JM_Empleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JM_Empleado.setForeground(new java.awt.Color(255, 204, 0));
         JM_Empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/employee.png"))); // NOI18N
-        JM_Empleado.setText("EMPLEADO");
-        JM_Empleado.setOpaque(true);
+        JM_Empleado.setText("EMPLEADOS");
+        JM_Empleado.setActionCommand("EMPLEADO");
         jMenu3.add(JM_Empleado);
+
+        JM_Clientes.setBackground(new java.awt.Color(51, 51, 51));
+        JM_Clientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JM_Clientes.setForeground(new java.awt.Color(255, 204, 0));
+        JM_Clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/team.png"))); // NOI18N
+        JM_Clientes.setText("CLIENTES");
+        jMenu3.add(JM_Clientes);
 
         Contenedor_Menu_General.add(jMenu3);
 
@@ -461,7 +450,6 @@ public class Contenedor extends javax.swing.JFrame {
         R_Salir.setForeground(new java.awt.Color(255, 255, 102));
         R_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/vista_style_business_and_data_icons_icons_pack_120673/liberacion-de-la-puerta-icono-9156-48.png"))); // NOI18N
         R_Salir.setText("Salir");
-        R_Salir.setOpaque(true);
         JM_Profile.add(R_Salir);
 
         Contenedor_Menu_General.add(JM_Profile);
@@ -604,6 +592,7 @@ public class Contenedor extends javax.swing.JFrame {
     public javax.swing.JMenuItem JMReporte;
     public javax.swing.JMenuItem JMReporteInOut;
     public javax.swing.JMenuItem JMReporteInvFisico;
+    public javax.swing.JMenuItem JM_Clientes;
     public javax.swing.JMenuItem JM_CompraProducto;
     public javax.swing.JMenuItem JM_ConsumoSaldoGeneral;
     public javax.swing.JMenuItem JM_DevolucionPunto;

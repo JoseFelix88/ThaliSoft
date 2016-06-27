@@ -7,6 +7,7 @@ import java.sql.*;
  * @author Mouse
  */
 public class database {
+
     /* DATOS PARA LA CONEXION */
 
     private static final Conexcion cnn = Conexcion.saberEstado();
@@ -103,21 +104,13 @@ public class database {
     }
 
     public Object[][] SELECT_SP(String S_P, Object parametros) {
-
         int registros = 0, columnas = 0;
-
         String q = null;
-        String q2;
-
-        if (S_P != null) {
-            q = "CALL " + S_P + "()";
-        }
-
         if (parametros != null) {
             q = "CALL " + S_P + "(" + parametros + ")";
         }
 
-        System.out.println(q);
+//        System.out.println(q);
         //obtenemos la cantidad de registros existentes en la tabla
         try {
 
