@@ -46,4 +46,13 @@ public class ProductoDao extends database {
         }
         return null;
     }
+    
+    public String NUMERO_FICHA_PRODUCTO(){
+        Object parametro = 4+","+0;
+        Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
+        if (rs.length > 0) {
+            return rs.toString();
+        }
+        return null;
+    }
 }
