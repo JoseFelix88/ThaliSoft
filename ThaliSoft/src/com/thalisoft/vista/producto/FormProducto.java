@@ -490,9 +490,9 @@ public class FormProducto extends javax.swing.JInternalFrame {
        txtreferencia.setText(producto.getId_referencia());
        txtdescripcion.setText(producto.getNom_descripcion());
        txtstock.setText(formatoTexto.numerico(producto.getStrock()));
-       txtcosto.setText(formatoTexto.numerico(producto.getCosto_und()));
-       txtprecioventa.setText(formatoTexto.numerico(producto.getPrecio_venta()));
-       txtutilidad.setText(formatoTexto.numerico(producto.getUtilidad()));
+       txtcosto.setText("$ "+formatoTexto.numerico(producto.getCosto_und()));
+       txtprecioventa.setText("$ "+formatoTexto.numerico(producto.getPrecio_venta()));
+       txtutilidad.setText("$ "+formatoTexto.numerico(producto.getUtilidad()));
        txttalla.setText(producto.getTalla());
        txtcolor.setText(producto.getColor());
        txtmaterial.setText(producto.getMateria());
