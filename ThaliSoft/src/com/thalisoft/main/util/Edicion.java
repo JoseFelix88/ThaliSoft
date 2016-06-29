@@ -45,7 +45,6 @@ public class Edicion extends database {
 
     public int v = 1;
 
-   
     public void llenartabla(JTable tabla, List<Object> list) {
         if (list != null) {
 
@@ -110,10 +109,7 @@ public class Edicion extends database {
     }
 
     String ReemplazarCarateres(String cadena) {
-
-        String numero = cadena.replace(".", "").replace("%", "").replace(" ", "").
-                replace("$", "").replace("$ ", "");
-
+        String numero = cadena.replace(".", "").replace("%", "").replace(" ", "").replace("$", "").replace("$ ", "");
         return numero;
     }
 
@@ -815,41 +811,40 @@ public class Edicion extends database {
         label.setIcon(iconoEscalado);
 
     }
-    
+
 
     /*public boolean Insertar_Imagen(JFileChooserCus file, String sentenciaSQL) {
 
-        boolean rpta = false;
+     boolean rpta = false;
 
-        try {
+     try {
  
 
-            File fichero = file.GetFileSelected();
+     File fichero = file.GetFileSelected();
 
-            FileInputStream streamEntrada = new FileInputStream(fichero);
+     FileInputStream streamEntrada = new FileInputStream(fichero);
 
-            CallableStatement pstmt = Conec.prepareCall(sentenciaSQL);
+     CallableStatement pstmt = Conec.prepareCall(sentenciaSQL);
 
-            pstmt.setBinaryStream(1, streamEntrada, (int) fichero.length());
+     pstmt.setBinaryStream(1, streamEntrada, (int) fichero.length());
 
-            pstmt.executeUpdate();
+     pstmt.executeUpdate();
 
-            pstmt.close();
+     pstmt.close();
 
-            streamEntrada.close();
+     streamEntrada.close();
 
-            rpta = true;
+     rpta = true;
 
-        } catch (Exception e) {
+     } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "NO ASIGNASTES EL LOGO ");
+     JOptionPane.showMessageDialog(null, "NO ASIGNASTES EL LOGO ");
 
-        }
+     }
 
-        return rpta;
+     return rpta;
 
-    }*/
-
+     }*/
     // ***AUN SIN IMPLEMENTAR!***
     public static float Redondear_Sifras(int decimales_a_dejar, double Ynumero) {
 

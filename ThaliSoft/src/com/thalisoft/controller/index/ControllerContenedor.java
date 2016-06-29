@@ -7,6 +7,7 @@ import com.thalisoft.vista.cliente.FormListarClientes;
 import com.thalisoft.vista.empleado.FormEmpleado;
 import com.thalisoft.vista.empleado.FormListarEmpleados;
 import com.thalisoft.vista.index.Contenedor;
+import com.thalisoft.vista.producto.FormProducto;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,6 +43,7 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
     FormListarEmpleados formListarEmpleados;
     FormCliente formCliente;
     FormListarClientes formListarClientes;
+    FormProducto formProducto;
 
     private static JDesktopPane jDesktopPane1;
 
@@ -76,8 +78,9 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
             Obtener_Eventos_De_SubMenu(contenedor.JM_OrdenCompra);
             Obtener_Eventos_De_SubMenu(contenedor.JM_Empleado);
             Obtener_Eventos_De_SubMenu(contenedor.JM_Clientes);
-            contenedor.JM_Profile.setText(Variables_Gloabales.EMPLEADO.getNombres()+" "
-                    + ""+Variables_Gloabales.EMPLEADO.getApellidos());
+            Obtener_Eventos_De_SubMenu(contenedor.JM_Producto);
+            contenedor.JM_Profile.setText(Variables_Gloabales.EMPLEADO.getNombres() + " "
+                    + "" + Variables_Gloabales.EMPLEADO.getApellidos());
         } else {
             contenedor.setVisible(true);
         }
@@ -116,7 +119,7 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
                 }
 
                 break;
-                
+
             case "CLIENTES":
                 if (Obtener_Estado_Formulario(this.formListarClientes, Contenedor.Panel_Contenedor)) {
 
@@ -133,18 +136,24 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
                 }
                 break;
 
-            /*  case "Compra":
+            case "PRODUCTOS":
 
-             if (Obtener_Estado_Formulario(this.formFacturaCompra, Contenedor.Panel_Contenedor)) {
-             formFacturaCompra = new FormFacturaCompra();
-             new ControllerFacturaCompra(formFacturaCompra).execute();
+                if (Obtener_Estado_Formulario(this.formProducto, Contenedor.Panel_Contenedor)) {
+                    formProducto = new FormProducto();
+                    formProducto.show();
 
-             } else {
-             formFacturaCompra.setIcon(false);
-             }
-             break;
+                } else {
+                    formProducto.setIcon(false);
+                }
 
-             case "Lotes Almacenados":
+                Contenedor.Panel_Contenedor.add(formProducto);
+                java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
+                java.awt.Dimension Tamaño_InternalFrame = formProducto.getSize();
+                formProducto.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
+                        (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
+                break;
+
+            /* case "Lotes Almacenados":
 
              if (Obtener_Estado_Formulario(this.formlotealmacenado, Contenedor.Panel_Contenedor)) {
              formSalidasProducto = new FormSalidasProducto();

@@ -3,6 +3,7 @@ package com.thalisoft.model.producto;
 import com.thalisoft.main.util.Edicion;
 import com.thalisoft.main.util.database;
 import com.thalisoft.model.empleado.EmpleadoDao;
+import java.util.Arrays;
 
 public class ProductoDao extends database {
 
@@ -14,8 +15,9 @@ public class ProductoDao extends database {
     }
 
     public Producto READ_PRODUCTO(Object key) {
+        Object parametro = 2+","+key;
         Producto producto = null;
-        Object[][] rs = SELECT_SP("SELECT_PRODUCTO", key);
+        Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
         if (rs.length > 0) {
             empleado = new EmpleadoDao();
             producto = new Producto();
@@ -48,10 +50,10 @@ public class ProductoDao extends database {
     }
     
     public String NUMERO_FICHA_PRODUCTO(){
-        Object parametro = 4+","+0;
+        Object parametro = 3+","+0;
         Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
         if (rs.length > 0) {
-            return rs.toString();
+            return rs[0][0].toString();
         }
         return null;
     }

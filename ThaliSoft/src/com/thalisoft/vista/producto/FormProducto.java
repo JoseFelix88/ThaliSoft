@@ -3,9 +3,12 @@ package com.thalisoft.vista.producto;
 import com.thalisoft.main.util.CambiaFormatoTexto;
 import com.thalisoft.main.util.Edicion;
 import com.thalisoft.main.util.Test_CodigoAleatorio;
+import com.thalisoft.main.util.Variables_Gloabales;
 import com.thalisoft.model.empleado.EmpleadoDao;
 import com.thalisoft.model.producto.Producto;
 import com.thalisoft.model.producto.ProductoDao;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class FormProducto extends javax.swing.JInternalFrame {
 
@@ -19,7 +22,24 @@ public class FormProducto extends javax.swing.JInternalFrame {
     public FormProducto() {
         Pdao = new ProductoDao();
         initComponents();
-        txtnumficha.setText(Pdao.NUMERO_FICHA_PRODUCTO());
+        NUEVO_PRODUCTO();
+        txtprecioventa.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                txtprecioventa.setText("$ " + formatoTexto.numerico(edicion.toNumeroEntero(txtprecioventa.getText())));
+                if (CALCULAR_UTILIDAD() > 0) {
+                    txtutilidad.setText("$ " + formatoTexto.numerico(CALCULAR_UTILIDAD()));
+                } else {
+                    txtutilidad.setText("$ 0");
+                }
+            }
+        });
+        txtcosto.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                txtcosto.setText("$ " + formatoTexto.numerico(edicion.toNumeroEntero(txtcosto.getText())));
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -84,6 +104,8 @@ public class FormProducto extends javax.swing.JInternalFrame {
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Referencia*");
+
+        txtreferencia.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Descripción*");
@@ -338,20 +360,45 @@ public class FormProducto extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/add-page.png"))); // NOI18N
         jButton1.setToolTipText("Nuevo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/book.png"))); // NOI18N
         jButton2.setToolTipText("Consultar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/save.png"))); // NOI18N
         jButton3.setToolTipText("Guardar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/shift-change.png"))); // NOI18N
         jButton4.setToolTipText("Modificar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/printer.png"))); // NOI18N
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/exit.png"))); // NOI18N
         jButton5.setToolTipText("Salir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -414,6 +461,47 @@ public class FormProducto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        NUEVO_PRODUCTO();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Object idproducto = edicion.msjQuest(2, "ingresa la referencia del producto.");
+        if (CONSULTA_PRODUCTO(idproducto) == false) {
+            edicion.mensajes(1, "la referencia no esta registrada.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int opcion = (int) edicion.msjQuest(1, "estas seguro que desea registrar la referencia?");
+        if (opcion == 0) {
+            if (validarProducto() != false) {
+                if (CONSULTA_PRODUCTO(txtreferencia.getText()) != true) {
+                    if (Pdao.EJECUTAR_CRUD(DATOS_PRODUCTO(0)) != false) {
+                        edicion.mensajes(2, "producto registrado correctamente.");
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int opcion = (int) edicion.msjQuest(1, "estas seguro que desea modificar la referencia?");
+        if (opcion == 0) {
+            if (validarProducto() != false) {
+                if (CONSULTA_PRODUCTO(txtreferencia.getText()) != false) {
+                    if (Pdao.EJECUTAR_CRUD(DATOS_PRODUCTO(1)) != false) {
+                        edicion.mensajes(2, "producto modificado correctamente.");
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -458,7 +546,6 @@ public class FormProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txttalla;
     private javax.swing.JTextField txtutilidad;
     // End of variables declaration//GEN-END:variables
-
     private boolean validarProducto() {
         if (txtreferencia.getText().isEmpty() | txtreferencia.getText() == null) {
             edicion.mensajes(1, "por favor ingresa la referencia del producto.");
@@ -485,20 +572,98 @@ public class FormProducto extends javax.swing.JInternalFrame {
         return true;
     }
 
-    private void LOAD_PRODUCT_COMPONET(){
-       txtnumficha.setText(formatoTexto.numerico(producto.getId_producto()));
-       txtreferencia.setText(producto.getId_referencia());
-       txtdescripcion.setText(producto.getNom_descripcion());
-       txtstock.setText(formatoTexto.numerico(producto.getStrock()));
-       txtcosto.setText("$ "+formatoTexto.numerico(producto.getCosto_und()));
-       txtprecioventa.setText("$ "+formatoTexto.numerico(producto.getPrecio_venta()));
-       txtutilidad.setText("$ "+formatoTexto.numerico(producto.getUtilidad()));
-       txttalla.setText(producto.getTalla());
-       txtcolor.setText(producto.getColor());
-       txtmaterial.setText(producto.getMateria());
-       txtsexo.setText(producto.getSexo());
-       txtedad.setText(producto.getEdad());
-       txtmarca.setText(producto.getMarca());
-       txtdiseño.setText(producto.getDiseño());
+    private void LOAD_PRODUCT_COMPONET() {
+        txtnumficha.setText(formatoTexto.numerico(producto.getId_producto()));
+        txtreferencia.setText(producto.getId_referencia());
+        txtdescripcion.setText(producto.getNom_descripcion());
+        txtstock.setText(formatoTexto.numerico(producto.getStrock()));
+        txtcosto.setText("$ " + formatoTexto.numerico(producto.getCosto_und()));
+        txtprecioventa.setText("$ " + formatoTexto.numerico(producto.getPrecio_venta()));
+        txtutilidad.setText("$ " + formatoTexto.numerico(producto.getUtilidad()));
+        txttalla.setText(producto.getTalla());
+        txtcolor.setText(producto.getColor());
+        txtmaterial.setText(producto.getMateria());
+        txtsexo.setText(producto.getSexo());
+        txtedad.setText(producto.getEdad());
+        txtmarca.setText(producto.getMarca());
+        txtdiseño.setText(producto.getDiseño());
+    }
+
+    private boolean CONSULTA_PRODUCTO(Object key) {
+        producto = Pdao.READ_PRODUCTO(key);
+        if (producto != null) {
+            LOAD_PRODUCT_COMPONET();
+            return true;
+        }
+        return false;
+    }
+
+    private void NUEVO_PRODUCTO() {
+        producto = new Producto();
+        LOAD_PRODUCT_COMPONET();
+        txtnumficha.setText(Pdao.NUMERO_FICHA_PRODUCTO());
+        String codreferencia = codigoAleatorio.getCodigoAleatorioNumerico();
+        if (CONSULTA_PRODUCTO(codreferencia) != true) {
+            txtreferencia.setText(codreferencia);
+        }
+    }
+
+    private Object[] DATOS_PRODUCTO(int opcion) {
+        Object[] key = new Object[16];
+        producto = Cargar_Producto();
+        if (opcion == 0) {
+            key[0] = 0;
+        }
+        if (opcion == 1) {
+            key[0] = 1;
+        }
+        if (opcion == 2) {
+            key[0] = 2;
+        }
+        key[1] = producto.getId_producto();
+        key[2] = "'" + producto.getId_referencia() + "'";
+        key[3] = "'" + producto.getNom_descripcion().toUpperCase() + "'";
+        key[4] = producto.getStrock();
+        key[5] = producto.getCosto_und();
+        key[6] = producto.getPrecio_venta();
+        key[7] = producto.getUtilidad();
+        key[8] = "'" + producto.getTalla() + "'";
+        key[9] = "'" + producto.getColor() + "'";
+        key[10] = "'" + producto.getMateria() + "'";
+        key[11] = "'" + producto.getSexo() + "'";
+        key[12] = "'" + producto.getEdad() + "'";
+        key[13] = "'" + producto.getMarca() + "'";
+        key[14] = "'" + producto.getDiseño() + "'";
+        key[15] = "'" + producto.getEmpleado().getIdentificacion() + "'";
+        return key;
+    }
+
+    private Producto Cargar_Producto() {
+        producto = new Producto();
+        producto.setId_producto(edicion.toNumeroEntero(txtnumficha.getText()));
+        producto.setId_referencia(txtreferencia.getText());
+        producto.setNom_descripcion(txtdescripcion.getText());
+        producto.setStrock(edicion.toNumeroEntero(txtstock.getText()));
+        producto.setCosto_und(edicion.toNumeroEntero(txtcosto.getText()));
+        producto.setPrecio_venta(edicion.toNumeroEntero(txtprecioventa.getText()));
+        producto.setUtilidad(edicion.toNumeroEntero(txtutilidad.getText()));
+        producto.setTalla(txttalla.getText());
+        producto.setColor(txtcolor.getText());
+        producto.setMateria(txtmaterial.getText());
+        producto.setSexo(txtsexo.getText());
+        producto.setEdad(txtedad.getText());
+        producto.setMarca(txtmarca.getText());
+        producto.setDiseño(txtdiseño.getText());
+        producto.setEmpleado(Variables_Gloabales.EMPLEADO);
+        return producto;
+    }
+
+    private int CALCULAR_UTILIDAD() {
+        int UTILIDAD = 0;
+        if (validarProducto() != false) {
+            producto = Cargar_Producto();
+            UTILIDAD = producto.getPrecio_venta() - producto.getCosto_und();
+        }
+        return UTILIDAD;
     }
 }

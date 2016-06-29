@@ -56,7 +56,7 @@ public class Test_CodigoAleatorio {
 
         String codigoAleatorio = "";
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
 
             if (i % 2 == 0) {
                 codigoAleatorio = (codigoAleatorio + this.getAleatorionNumeros(0, 9));
