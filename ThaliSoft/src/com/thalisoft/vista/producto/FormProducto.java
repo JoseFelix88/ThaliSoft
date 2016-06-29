@@ -469,6 +469,8 @@ public class FormProducto extends javax.swing.JInternalFrame {
         Object idproducto = edicion.msjQuest(2, "ingresa la referencia del producto.");
         if (CONSULTA_PRODUCTO(idproducto) == false) {
             edicion.mensajes(1, "la referencia no esta registrada.");
+        } else {
+            LOAD_PRODUCT_COMPONET();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -489,7 +491,7 @@ public class FormProducto extends javax.swing.JInternalFrame {
         int opcion = (int) edicion.msjQuest(1, "estas seguro que desea modificar la referencia?");
         if (opcion == 0) {
             if (validarProducto() != false) {
-                if (CONSULTA_PRODUCTO(txtreferencia.getText()) != false) {
+                if (CONSULTA_PRODUCTO(txtnumficha.getText()) != false) {
                     if (Pdao.EJECUTAR_CRUD(DATOS_PRODUCTO(1)) != false) {
                         edicion.mensajes(2, "producto modificado correctamente.");
                     }
@@ -592,7 +594,6 @@ public class FormProducto extends javax.swing.JInternalFrame {
     private boolean CONSULTA_PRODUCTO(Object key) {
         producto = Pdao.READ_PRODUCTO(key);
         if (producto != null) {
-            LOAD_PRODUCT_COMPONET();
             return true;
         }
         return false;
