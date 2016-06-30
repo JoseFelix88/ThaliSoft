@@ -15,7 +15,7 @@ public class ProductoDao extends database {
     }
 
     public Producto READ_PRODUCTO(Object key) {
-        Object parametro = 2+","+key;
+        Object parametro = 1+","+key;
         Producto producto = null;
         Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
         if (rs.length > 0) {
@@ -41,8 +41,9 @@ public class ProductoDao extends database {
         return producto;
     }
 
-    public Object[][] LISTADO_DE_PRODUCTOS(Object KEY) {
-        Object[][] rs = SELECT_SP("SELECT_PRODUCTO", KEY);
+    public Object[][] LISTADO_DE_PRODUCTOS() {
+         Object parametro = 1+","+0;
+        Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
         if (rs.length > 0) {
             return rs;
         }

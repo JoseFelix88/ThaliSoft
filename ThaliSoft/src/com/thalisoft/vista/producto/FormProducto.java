@@ -467,6 +467,7 @@ public class FormProducto extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Object idproducto = edicion.msjQuest(2, "ingresa la referencia del producto.");
+        System.out.println(idproducto);
         if (CONSULTA_PRODUCTO(idproducto) == false) {
             edicion.mensajes(1, "la referencia no esta registrada.");
         } else {
@@ -593,10 +594,7 @@ public class FormProducto extends javax.swing.JInternalFrame {
 
     private boolean CONSULTA_PRODUCTO(Object key) {
         producto = Pdao.READ_PRODUCTO(key);
-        if (producto != null) {
-            return true;
-        }
-        return false;
+        return producto != null;
     }
 
     private void NUEVO_PRODUCTO() {
