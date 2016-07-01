@@ -476,6 +476,8 @@ public class FormProducto extends javax.swing.JInternalFrame {
                     if (Pdao.EJECUTAR_CRUD(DATOS_PRODUCTO(0)) != false) {
                         formListaProductos.LLENAR_LISTADO_DE_REFERENCIAS();
                         edicion.mensajes(2, "referencia registrado correctamente.");
+                    }else{
+                        edicion.mensajes(1, "la referencia # "+txtreferencia.getText()+" se encuentra registrada");
                     }
                 }
             }

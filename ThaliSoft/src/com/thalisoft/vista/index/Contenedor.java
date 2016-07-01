@@ -421,12 +421,12 @@ public class Contenedor extends javax.swing.JFrame {
         jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setForeground(new java.awt.Color(255, 255, 0));
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Utilidades.png"))); // NOI18N
-        jMenu3.setText("Utilidades");
+        jMenu3.setText("Maestros");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         JM_Empleado.setBackground(new java.awt.Color(255, 51, 51));
         JM_Empleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        JM_Empleado.setForeground(new java.awt.Color(255, 204, 0));
+        JM_Empleado.setForeground(new java.awt.Color(255, 255, 255));
         JM_Empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/employee.png"))); // NOI18N
         JM_Empleado.setText("EMPLEADOS");
         JM_Empleado.setActionCommand("EMPLEADO");
@@ -435,7 +435,7 @@ public class Contenedor extends javax.swing.JFrame {
 
         JM_Clientes.setBackground(new java.awt.Color(255, 51, 51));
         JM_Clientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        JM_Clientes.setForeground(new java.awt.Color(255, 204, 0));
+        JM_Clientes.setForeground(new java.awt.Color(255, 255, 255));
         JM_Clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/team.png"))); // NOI18N
         JM_Clientes.setText("CLIENTES");
         JM_Clientes.setOpaque(true);
@@ -443,7 +443,7 @@ public class Contenedor extends javax.swing.JFrame {
 
         JM_Producto.setBackground(new java.awt.Color(255, 51, 51));
         JM_Producto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        JM_Producto.setForeground(new java.awt.Color(255, 204, 0));
+        JM_Producto.setForeground(new java.awt.Color(255, 255, 255));
         JM_Producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/baby-socks.png"))); // NOI18N
         JM_Producto.setText("PRODUCTOS");
         JM_Producto.setOpaque(true);
