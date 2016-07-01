@@ -18,28 +18,21 @@ public class FormProducto extends javax.swing.JInternalFrame {
     ProductoDao Pdao;
     Test_CodigoAleatorio codigoAleatorio = new Test_CodigoAleatorio();
     CambiaFormatoTexto formatoTexto = new CambiaFormatoTexto();
+    FormListaProductos formListaProductos;
 
     public FormProducto() {
         Pdao = new ProductoDao();
         initComponents();
         NUEVO_PRODUCTO();
-        txtprecioventa.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                txtprecioventa.setText("$ " + formatoTexto.numerico(edicion.toNumeroEntero(txtprecioventa.getText())));
-                if (CALCULAR_UTILIDAD() > 0) {
-                    txtutilidad.setText("$ " + formatoTexto.numerico(CALCULAR_UTILIDAD()));
-                } else {
-                    txtutilidad.setText("$ 0");
-                }
-            }
-        });
-        txtcosto.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                txtcosto.setText("$ " + formatoTexto.numerico(edicion.toNumeroEntero(txtcosto.getText())));
-            }
-        });
+        accionesFormulario();
+    }
+
+    FormProducto(FormListaProductos aThis) {
+        formListaProductos = aThis;
+        Pdao = new ProductoDao();
+        initComponents();
+        NUEVO_PRODUCTO();
+        accionesFormulario();
     }
 
     @SuppressWarnings("unchecked")
@@ -481,7 +474,8 @@ public class FormProducto extends javax.swing.JInternalFrame {
             if (validarProducto() != false) {
                 if (CONSULTA_PRODUCTO(txtreferencia.getText()) != true) {
                     if (Pdao.EJECUTAR_CRUD(DATOS_PRODUCTO(0)) != false) {
-                        edicion.mensajes(2, "producto registrado correctamente.");
+                        formListaProductos.LLENAR_LISTADO_DE_REFERENCIAS();
+                        edicion.mensajes(2, "referencia registrado correctamente.");
                     }
                 }
             }
@@ -494,6 +488,7 @@ public class FormProducto extends javax.swing.JInternalFrame {
             if (validarProducto() != false) {
                 if (CONSULTA_PRODUCTO(txtnumficha.getText()) != false) {
                     if (Pdao.EJECUTAR_CRUD(DATOS_PRODUCTO(1)) != false) {
+                        formListaProductos.LLENAR_LISTADO_DE_REFERENCIAS();
                         edicion.mensajes(2, "producto modificado correctamente.");
                     }
                 }
@@ -575,7 +570,7 @@ public class FormProducto extends javax.swing.JInternalFrame {
         return true;
     }
 
-    private void LOAD_PRODUCT_COMPONET() {
+    public void LOAD_PRODUCT_COMPONET() {
         txtnumficha.setText(formatoTexto.numerico(producto.getId_producto()));
         txtreferencia.setText(producto.getId_referencia());
         txtdescripcion.setText(producto.getNom_descripcion());
@@ -592,7 +587,7 @@ public class FormProducto extends javax.swing.JInternalFrame {
         txtdiseño.setText(producto.getDiseño());
     }
 
-    private boolean CONSULTA_PRODUCTO(Object key) {
+    public boolean CONSULTA_PRODUCTO(Object key) {
         producto = Pdao.READ_PRODUCTO(key);
         return producto != null;
     }
@@ -605,6 +600,27 @@ public class FormProducto extends javax.swing.JInternalFrame {
         if (CONSULTA_PRODUCTO(codreferencia) != true) {
             txtreferencia.setText(codreferencia);
         }
+
+    }
+
+    private void accionesFormulario() {
+        txtprecioventa.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                txtprecioventa.setText("$ " + formatoTexto.numerico(edicion.toNumeroEntero(txtprecioventa.getText())));
+                if (CALCULAR_UTILIDAD() > 0) {
+                    txtutilidad.setText("$ " + formatoTexto.numerico(CALCULAR_UTILIDAD()));
+                } else {
+                    txtutilidad.setText("$ 0");
+                }
+            }
+        });
+        txtcosto.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                txtcosto.setText("$ " + formatoTexto.numerico(edicion.toNumeroEntero(txtcosto.getText())));
+            }
+        });
     }
 
     private Object[] DATOS_PRODUCTO(int opcion) {

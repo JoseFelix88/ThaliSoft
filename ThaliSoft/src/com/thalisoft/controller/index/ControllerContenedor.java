@@ -7,6 +7,7 @@ import com.thalisoft.vista.cliente.FormListarClientes;
 import com.thalisoft.vista.empleado.FormEmpleado;
 import com.thalisoft.vista.empleado.FormListarEmpleados;
 import com.thalisoft.vista.index.Contenedor;
+import com.thalisoft.vista.producto.FormListaProductos;
 import com.thalisoft.vista.producto.FormProducto;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
@@ -21,7 +22,7 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
     public static Contenedor getContenedor() {
         return contenedor;
     }
-    /*FormProducto formProducto;
+    /*FormProducto formListaProductos;
      FormAsignarCUM formAsignarCUM;
      FormListarPlu formListarPlu;
      FormFacturaCompra formFacturaCompra;
@@ -43,7 +44,7 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
     FormListarEmpleados formListarEmpleados;
     FormCliente formCliente;
     FormListarClientes formListarClientes;
-    FormProducto formProducto;
+    FormListaProductos  formListaProductos;
 
     private static JDesktopPane jDesktopPane1;
 
@@ -138,18 +139,18 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
 
             case "PRODUCTOS":
 
-                if (Obtener_Estado_Formulario(this.formProducto, Contenedor.Panel_Contenedor)) {
-                    formProducto = new FormProducto();
-                    formProducto.show();
+                if (Obtener_Estado_Formulario(this.formListaProductos, Contenedor.Panel_Contenedor)) {
+                    formListaProductos = new FormListaProductos();
+                    formListaProductos.show();
 
                 } else {
-                    formProducto.setIcon(false);
+                    formListaProductos.setIcon(false);
                 }
 
-                Contenedor.Panel_Contenedor.add(formProducto);
+                Contenedor.Panel_Contenedor.add(formListaProductos);
                 java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
-                java.awt.Dimension Tamaño_InternalFrame = formProducto.getSize();
-                formProducto.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
+                java.awt.Dimension Tamaño_InternalFrame = formListaProductos.getSize();
+                formListaProductos.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
                         (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
                 break;
 
