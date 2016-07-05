@@ -26,21 +26,17 @@ public class TestDao {
      
         System.out.println("ficha nueva: "+dao.NUMERO_FICHA());
         
-        dao.LISTAR_EMPLEADO().stream().forEach((LISTADO_EMPLEADOS) -> {
-               try {
-                   System.out.println("ID. FICHA: "+LISTADO_EMPLEADOS.getIdusuario()+"\n"
-                           + ""+"idempleado: " + LISTADO_EMPLEADOS.getIdentificacion()+"\n"
-                           + "Apellidos y Nombres: "+LISTADO_EMPLEADOS.getApellidos()+"\n"
-                           + "Direccion: "+LISTADO_EMPLEADOS.getDireccion()+"\n"
-                           + "telefono: "+LISTADO_EMPLEADOS.getTelefono()+"\n"
-                           + "Cargo: "+LISTADO_EMPLEADOS.getCargo()+"\n"
-                           + "salario: "+LISTADO_EMPLEADOS.getSalariobasico()+"\n"
-                           + "bono: "+LISTADO_EMPLEADOS.getBonificacion()+"\n"
-                           + "estado: "+LISTADO_EMPLEADOS.getEstado()+"\n"
-                           + "fechahoraingreso: "+DateUtil.toTimestamp(LISTADO_EMPLEADOS.getFechahoraingreso()));
-               } catch (ParseException ex) {
-                   Logger.getLogger(TestDao.class.getName()).log(Level.SEVERE, null, ex);
-               }
+/*        dao.LISTAR_EMPLEADO().stream().forEach((LISTADO_EMPLEADOS) -> {
+            System.out.println("ID. FICHA: "+LISTADO_EMPLEADOS.getIdusuario()+"\n"
+                    + ""+"idempleado: " + LISTADO_EMPLEADOS.getIdentificacion()+"\n"
+                    + "Apellidos y Nombres: "+LISTADO_EMPLEADOS.getApellidos()+"\n"
+                    + "Direccion: "+LISTADO_EMPLEADOS.getDireccion()+"\n"
+                    + "telefono: "+LISTADO_EMPLEADOS.getTelefono()+"\n"
+                    + "Cargo: "+LISTADO_EMPLEADOS.getCargo()+"\n"
+                    + "salario: "+LISTADO_EMPLEADOS.getSalariobasico()+"\n"
+                    + "bono: "+LISTADO_EMPLEADOS.getBonificacion()+"\n"
+                    + "estado: "+LISTADO_EMPLEADOS.getEstado()+"\n"
+                    + "fechahoraingreso: "+DateUtil.toTimestamp(LISTADO_EMPLEADOS.getFechahoraingreso()));
         }); /*ProductoDAO dAO = new ProductoDAO();
         for (Object[] lotesalmacenado : dAO.lotesalmacenados("0004")) {
         System.out.println("producto: "+lotesalmacenado[3]);

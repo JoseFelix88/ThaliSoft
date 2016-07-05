@@ -157,6 +157,7 @@ public class Contenedor extends javax.swing.JFrame {
         JM_Empleado = new javax.swing.JMenuItem();
         JM_Clientes = new javax.swing.JMenuItem();
         JM_Producto = new javax.swing.JMenuItem();
+        JM_Proveedor = new javax.swing.JMenuItem();
         JM_Profile = new javax.swing.JMenu();
         R_Salir = new javax.swing.JMenuItem();
 
@@ -166,7 +167,7 @@ public class Contenedor extends javax.swing.JFrame {
         Panel_Contenedor.setLayout(Panel_ContenedorLayout);
         Panel_ContenedorLayout.setHorizontalGroup(
             Panel_ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 920, Short.MAX_VALUE)
+            .addGap(0, 968, Short.MAX_VALUE)
         );
         Panel_ContenedorLayout.setVerticalGroup(
             Panel_ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,7 +428,7 @@ public class Contenedor extends javax.swing.JFrame {
         JM_Empleado.setBackground(new java.awt.Color(255, 51, 51));
         JM_Empleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JM_Empleado.setForeground(new java.awt.Color(255, 255, 255));
-        JM_Empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/employee.png"))); // NOI18N
+        JM_Empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Empleado.png"))); // NOI18N
         JM_Empleado.setText("EMPLEADOS");
         JM_Empleado.setActionCommand("EMPLEADO");
         JM_Empleado.setOpaque(true);
@@ -444,10 +445,18 @@ public class Contenedor extends javax.swing.JFrame {
         JM_Producto.setBackground(new java.awt.Color(255, 51, 51));
         JM_Producto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JM_Producto.setForeground(new java.awt.Color(255, 255, 255));
-        JM_Producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/baby-socks.png"))); // NOI18N
+        JM_Producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/baby-clothes.png"))); // NOI18N
         JM_Producto.setText("PRODUCTOS");
         JM_Producto.setOpaque(true);
         jMenu3.add(JM_Producto);
+
+        JM_Proveedor.setBackground(new java.awt.Color(255, 51, 51));
+        JM_Proveedor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JM_Proveedor.setForeground(new java.awt.Color(255, 255, 255));
+        JM_Proveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/thalisoft/image/iconos/employee.png"))); // NOI18N
+        JM_Proveedor.setText("PROVEEDORES");
+        JM_Proveedor.setOpaque(true);
+        jMenu3.add(JM_Proveedor);
 
         Contenedor_Menu_General.add(jMenu3);
 
@@ -613,6 +622,7 @@ public class Contenedor extends javax.swing.JFrame {
     public javax.swing.JMenuItem JM_OrdenCompra;
     public javax.swing.JMenuItem JM_Producto;
     public javax.swing.JMenu JM_Profile;
+    public javax.swing.JMenuItem JM_Proveedor;
     public javax.swing.JMenuItem JM_SalidaAutorizada;
     public javax.swing.JMenuItem JM_Ubicarproducto;
     public javax.swing.JMenuItem JM_consumosaldopunto;

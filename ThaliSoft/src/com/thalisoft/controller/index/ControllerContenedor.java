@@ -8,7 +8,7 @@ import com.thalisoft.vista.empleado.FormEmpleado;
 import com.thalisoft.vista.empleado.FormListarEmpleados;
 import com.thalisoft.vista.index.Contenedor;
 import com.thalisoft.vista.producto.FormListaProductos;
-import com.thalisoft.vista.producto.FormProducto;
+import com.thalisoft.vista.proveedor.FormListarProveedor;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +44,8 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
     FormListarEmpleados formListarEmpleados;
     FormCliente formCliente;
     FormListarClientes formListarClientes;
-    FormListaProductos  formListaProductos;
+    FormListaProductos formListaProductos;
+    FormListarProveedor formListarProveedor;
 
     private static JDesktopPane jDesktopPane1;
 
@@ -80,6 +81,7 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
             Obtener_Eventos_De_SubMenu(contenedor.JM_Empleado);
             Obtener_Eventos_De_SubMenu(contenedor.JM_Clientes);
             Obtener_Eventos_De_SubMenu(contenedor.JM_Producto);
+            Obtener_Eventos_De_SubMenu(contenedor.JM_Proveedor);
             contenedor.JM_Profile.setText(Variables_Gloabales.EMPLEADO.getNombres() + " "
                     + "" + Variables_Gloabales.EMPLEADO.getApellidos());
         } else {
@@ -142,37 +144,34 @@ public class ControllerContenedor extends SwingWorker<Object, Object> {
                 if (Obtener_Estado_Formulario(this.formListaProductos, Contenedor.Panel_Contenedor)) {
                     formListaProductos = new FormListaProductos();
                     formListaProductos.show();
-
+                    Contenedor.Panel_Contenedor.add(formListaProductos);
+                    java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
+                    java.awt.Dimension Tamaño_InternalFrame = formListaProductos.getSize();
+                    formListaProductos.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
+                            (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
                 } else {
                     formListaProductos.setIcon(false);
                 }
 
-                Contenedor.Panel_Contenedor.add(formListaProductos);
-                java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
-                java.awt.Dimension Tamaño_InternalFrame = formListaProductos.getSize();
-                formListaProductos.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
-                        (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
                 break;
 
-            /* case "Lotes Almacenados":
+            case "PROVEEDORES":
 
-             if (Obtener_Estado_Formulario(this.formlotealmacenado, Contenedor.Panel_Contenedor)) {
-             formSalidasProducto = new FormSalidasProducto();
-             formlotealmacenado = new Formlotealmacenado(formSalidasProducto);
-             formlotealmacenado.show();
+                if (Obtener_Estado_Formulario(this.formListarProveedor, Contenedor.Panel_Contenedor)) {
+                    formListarProveedor = new FormListarProveedor();
+                    formListarProveedor.show();
+                    Contenedor.Panel_Contenedor.add(formListarProveedor);
+                    java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
+                    java.awt.Dimension Tamaño_InternalFrame = formListarProveedor.getSize();
+                    formListarProveedor.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
+                            (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
+                } else {
+                    formListarProveedor.setIcon(false);
+                }
 
-             Contenedor.Panel_Contenedor.add(formlotealmacenado);
-             java.awt.Dimension Tamaño_Panel = Contenedor.Panel_Contenedor.getSize();
-             java.awt.Dimension Tamaño_InternalFrame = formlotealmacenado.getSize();
-             formlotealmacenado.setLocation((Tamaño_Panel.width - Tamaño_InternalFrame.width) / 2,
-             (Tamaño_Panel.height - Tamaño_InternalFrame.height) / 2);
-             } else {
-             formlotealmacenado.setIcon(false);
-             }
+                break;
 
-             break;
-
-             case "Generar Salida":
+            /* case "Generar Salida":
 
              if (Obtener_Estado_Formulario(this.formSalidasProducto, Contenedor.Panel_Contenedor)) {
              formSalidasProducto = new FormSalidasProducto();

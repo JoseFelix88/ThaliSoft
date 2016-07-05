@@ -1,27 +1,19 @@
 package com.thalisoft.main.util;
 
 import com.birosoft.liquid.LiquidLookAndFeel;
-import com.tekde.linet.components.JFileChooserCus;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
-import java.io.*;
-import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
