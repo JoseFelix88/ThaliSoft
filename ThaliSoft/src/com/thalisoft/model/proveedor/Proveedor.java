@@ -13,13 +13,14 @@ public class Proveedor implements Serializable {
     private String direccion;
     private String contacto;
     private String telcontacto;
+    private String correo;
     private Date fechahoraingreso;
     private Empleado empleado;
 
     public Proveedor() {
     }
 
-    public Proveedor(int idproveedor, String nit, String razonsocial, String telefono, String direccion, String contacto, String telcontacto, Date fechahoraingreso, Empleado empleado) {
+    public Proveedor(int idproveedor, String nit, String razonsocial, String telefono, String direccion, String contacto, String telcontacto, String correo, Date fechahoraingreso, Empleado empleado) {
         this.idproveedor = idproveedor;
         this.nit = nit;
         this.razonsocial = razonsocial;
@@ -27,10 +28,12 @@ public class Proveedor implements Serializable {
         this.direccion = direccion;
         this.contacto = contacto;
         this.telcontacto = telcontacto;
+        this.correo = correo;
         this.fechahoraingreso = fechahoraingreso;
         this.empleado = empleado;
     }
 
+    
     public int getIdproveedor() {
         return idproveedor;
     }
@@ -101,6 +104,14 @@ public class Proveedor implements Serializable {
 
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
     
     

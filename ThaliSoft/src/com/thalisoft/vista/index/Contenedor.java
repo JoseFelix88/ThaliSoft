@@ -31,6 +31,11 @@ public class Contenedor extends javax.swing.JFrame {
         setUndecorated(true);
         initComponents();
 
+        jMenu2.setVisible(false);
+        Menu_Empleado.setVisible(false);
+        jMenu4.setVisible(false);
+        jMenu1.setVisible(false);
+        jMenu5.setVisible(false);
        //this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setSize(1010, 720);//Z
         setLocationRelativeTo(null);
@@ -45,7 +50,7 @@ public class Contenedor extends javax.swing.JFrame {
         java.awt.Image Icono = java.awt.Toolkit.getDefaultToolkit().getImage(getClass().
                 getResource("/Iconos/Planeta.png"));
         this.setIconImage(Icono);
-        this.setTitle("Manager Warehouse");
+        this.setTitle("ThaliSoft");
         this.setForeground(Color.WHITE);
 
         Variable_Movimiento = null;
@@ -95,7 +100,7 @@ public class Contenedor extends javax.swing.JFrame {
 
         this.Panel_Contenedor.setUI(new javax.swing.plaf.basic.BasicDesktopPaneUI() {
             public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
-                javax.swing.ImageIcon Img = new javax.swing.ImageIcon(getClass().getResource("/ICONOS/Gold_Collection_Wallp.jpg"));
+                javax.swing.ImageIcon Img = new javax.swing.ImageIcon(getClass().getResource("/ICONOS/Gold_Collection.jpg"));
                 g.drawImage(Img.getImage(), 0, 0, c.getWidth(), c.getHeight(), null);
 
             }
@@ -420,8 +425,8 @@ public class Contenedor extends javax.swing.JFrame {
         Contenedor_Menu_General.add(jMenu5);
 
         jMenu3.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu3.setForeground(new java.awt.Color(255, 255, 0));
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Utilidades.png"))); // NOI18N
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/manage.png"))); // NOI18N
         jMenu3.setText("Maestros");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
@@ -468,7 +473,6 @@ public class Contenedor extends javax.swing.JFrame {
 
         R_Salir.setBackground(new java.awt.Color(0, 0, 0));
         R_Salir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        R_Salir.setForeground(new java.awt.Color(255, 255, 102));
         R_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/vista_style_business_and_data_icons_icons_pack_120673/liberacion-de-la-puerta-icono-9156-48.png"))); // NOI18N
         R_Salir.setText("Salir");
         JM_Profile.add(R_Salir);

@@ -1,5 +1,6 @@
 package com.thalisoft.model.proveedor;
 
+import com.thalisoft.main.util.DateUtil;
 import com.thalisoft.main.util.Edicion;
 import com.thalisoft.main.util.database;
 import com.thalisoft.model.empleado.EmpleadoDao;
@@ -19,9 +20,11 @@ public class ProveedorDao extends database {
         String parametro = 1+","+key;
         Object[][] rs = SELECT_SP("SELECT_PROVEEDOR", parametro);
         if (rs.length > 0) {
+            edao = new EmpleadoDao();
             proveedor = new Proveedor(edicion.toNumeroEntero(rs[0][0].toString()), rs[0][1].toString(),
                     rs[0][2].toString(), rs[0][3].toString(), rs[0][4].toString(),
-                    rs[0][5].toString(), rs[0][6].toString(), null, edao.CONSULTAR_EMPLEADO(rs[0][8]));
+                    rs[0][5].toString(), rs[0][6].toString(),rs[0][7].toString(), DateUtil.getDateTime(rs[0][8]),
+                    edao.CONSULTAR_EMPLEADO(rs[0][8]));
         }
         return proveedor;
     }

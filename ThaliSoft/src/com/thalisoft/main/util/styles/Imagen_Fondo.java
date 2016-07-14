@@ -14,7 +14,7 @@ public class Imagen_Fondo implements Border{
      public Imagen_Fondo(){
         try {
             //se obtiene la imagen
-            URL url = new URL(getClass().getResource("/Iconos/LOGOSUMISALUD.PNG").toString());
+            URL url = new URL(getClass().getResource("/Iconos/logo.png").toString());
             fondo = ImageIO.read(url);
         } catch (IOException ex) {            
         }

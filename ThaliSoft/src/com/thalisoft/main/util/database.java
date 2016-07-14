@@ -154,7 +154,7 @@ public class database {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Error en Select SQL: " + e);
+            System.out.println("Error en Select SQL: "+q+" " + e);
         }
         return data;
     }

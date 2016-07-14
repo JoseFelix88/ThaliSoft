@@ -1,8 +1,11 @@
 package com.thalisoft.model.producto;
 
+import com.thalisoft.main.util.DateUtil;
 import com.thalisoft.main.util.Edicion;
 import com.thalisoft.main.util.database;
 import com.thalisoft.model.empleado.EmpleadoDao;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductoDao extends database {
 
@@ -14,7 +17,7 @@ public class ProductoDao extends database {
     }
 
     public Producto READ_PRODUCTO(Object key) {
-        Object parametro = 1+","+key;
+        Object parametro = 1 + "," + key;
         Producto producto = null;
         Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
         if (rs.length > 0) {
@@ -41,16 +44,38 @@ public class ProductoDao extends database {
     }
 
     public Object[][] LISTADO_DE_PRODUCTOS() {
-         Object parametro = 2+","+0;
+        Object parametro = 2 + "," + 0;
         Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
         if (rs.length > 0) {
             return rs;
         }
         return null;
     }
-    
-    public String NUMERO_FICHA_PRODUCTO(){
-        Object parametro = 3+","+0;
+
+    public List<Producto> LISTA_PRODUCTOS() {
+        List<Producto> list = null;
+        Producto producto = null;
+        Object[][] rs = LISTADO_DE_PRODUCTOS();
+        if (rs.length > 0) {
+            list = new ArrayList<>();
+            for (Object[] r : rs) {
+                empleado = new EmpleadoDao();
+                producto = new Producto(edicion.toNumeroEntero(r[0].toString()),
+                        r[1].toString(), r[2].toString(),
+                        edicion.toNumeroEntero(r[3].toString()), edicion.toNumeroEntero(r[4].toString()),
+                        edicion.toNumeroEntero(r[5].toString()), 
+                        edicion.toNumeroEntero(r[6].toString()), r[7].toString(), r[8].toString(),
+                        r[9].toString(), r[10].toString(), r[11].toString(),
+                        r[12].toString(), r[13].toString(), DateUtil.getDateTime(r[14]), empleado.CONSULTAR_EMPLEADO(r[15]));
+                list.add(producto);
+            }
+
+        }
+        return list;
+    }
+
+    public String NUMERO_FICHA_PRODUCTO() {
+        Object parametro = 3 + "," + 0;
         Object[][] rs = SELECT_SP("SELECT_PRODUCTO", parametro);
         if (rs.length > 0) {
             return rs[0][0].toString();
